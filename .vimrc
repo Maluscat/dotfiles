@@ -1,3 +1,10 @@
+" Variables
+if has('win32')
+  let $VIMHOME = $USERPROFILE . '/vimfiles'
+else
+  let $VIMHOME = $HOME . '/.vim'
+endif
+
 " Import default vim
 source $VIMRUNTIME/defaults.vim
 
@@ -27,7 +34,9 @@ set termguicolors
 
 set wrap linebreak
 
-set pythonthreehome=C:/Program\ Files/Python/Python39
+if has('win32')
+  set pythonthreehome=C:/Program\ Files/Python/Python39
+endif
 
 set encoding=UTF-8
 
@@ -36,9 +45,9 @@ set splitright
 set noswapfile
 set undofile
 set backup
-" set directory^=$HOME/vimfiles/tmp/.swp//
-set backupdir^=$HOME/vimfiles/tmp/.backup//
-set undodir^=$HOME/vimfiles/tmp/.undo//
+" set directory^=$VIMHOME/tmp/.swp//
+set backupdir^=$VIMHOME/tmp/.backup//
+set undodir^=$VIMHOME/tmp/.undo//
 
 " Session handling
 set sessionoptions-=options
