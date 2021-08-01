@@ -28,13 +28,13 @@ set expandtab
 set foldmethod=syntax
 set foldlevelstart=99
 
-set shell=pwsh
-
 set termguicolors
 
 set wrap linebreak
 
 if has('win32')
+  set shell=pwsh
+
   set pythonthreehome=C:/Program\ Files/Python/Python39
 endif
 
