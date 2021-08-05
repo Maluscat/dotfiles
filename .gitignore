@@ -2,3 +2,9 @@
 !.gitignore
 !.vimrc
 !.gvimrc
+
+!/.vim
+/.vim/*
+!/.vim/ft*/
+!/.vim/after/
+
