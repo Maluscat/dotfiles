@@ -159,8 +159,6 @@ command -nargs=? Count :%s/<args>//gn
 
 call plug#begin('~/.vim/plugged')
 
-" Plug 'dense-analysis/ale'
-
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
