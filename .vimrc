@@ -1,9 +1,8 @@
-" Variables
 if has('win32')
-  let $VIMHOME = $USERPROFILE . '/vimfiles'
-else
-  let $VIMHOME = $HOME . '/.vim'
+  set runtimepath^=$HOME/.vim
 endif
+
+let $VIMHOME = '~/.vim'
 
 " Import default vim
 source $VIMRUNTIME/defaults.vim
@@ -156,7 +155,7 @@ command -nargs=? Count :%s/<args>//gn
 
 " --- Plug ---
 
-call plug#begin()
+call plug#begin('~/.vim/plugged')
 
 " Plug 'dense-analysis/ale'
 
