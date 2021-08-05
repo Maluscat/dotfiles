@@ -34,7 +34,9 @@ set wrap linebreak
 if has('win32')
   set shell=pwsh
 
-  set pythonthreehome=C:/Program\ Files/Python/Python39
+  if !has('nvim')
+    set pythonthreehome=C:/Program\ Files/Python/Python39
+  endif
 endif
 
 set encoding=UTF-8
