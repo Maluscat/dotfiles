@@ -219,7 +219,18 @@ set updatetime=100
 
 " Lightline
 set noshowmode
-let g:lightline = { 'colorscheme': 'nightfly' }
+let g:lightline = {
+      \   'colorscheme': 'moonfly',
+      \   'active': {
+      \     'left': [
+      \       [ 'mode', 'paste' ],
+      \       [ 'readonly', 'filename', 'gitbranch', 'modified' ]
+      \     ]
+      \   },
+      \   'component_function': {
+      \     'gitbranch': 'FugitiveHead'
+      \   }
+      \ }
 
 let g:UltiSnipsExpandTrigger = "<C-s>"
 let g:UltiSnipsJumpForwardTrigger = "<S-Right>"
