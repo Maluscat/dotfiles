@@ -147,6 +147,7 @@ let g:startify_bookmarks = [
 
 let g:startify_session_persistence = 1
 let g:startify_session_sort = 1
+let g:startify_session_dir = '~/.vim/session'
 
 " Signify
 set updatetime=100
