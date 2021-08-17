@@ -151,10 +151,6 @@ let g:startify_session_dir = '~/.vim/session'
 " Signify
 set updatetime=100
 
-" highlight GitGutterAdd    guifg=#009900 ctermfg=2
-" highlight GitGutterChange guifg=#bbbb00 ctermfg=15
-" highlight GitGutterDelete guifg=#ff2222 ctermfg=28
-
 " Lightline
 set noshowmode
 let g:lightline = {
@@ -182,10 +178,6 @@ let g:UltiSnipsUsePythonVersion = 3
 let NERDTreeHijackNetrw = 1
 " Hack to prevent devicons from being cut off
 set ambiwidth=double
-
-" Colorschemes
-" let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-" let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
 colorscheme moonfly
 
