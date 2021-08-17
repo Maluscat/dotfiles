@@ -182,6 +182,8 @@ let NERDTreeHijackNetrw = 1
 " Hack to prevent devicons from being cut off
 set ambiwidth=double
 
+let g:AutoPairsMultilineClose = 0
+
 colorscheme moonfly
 
 
