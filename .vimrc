@@ -1,5 +1,6 @@
 if has('win32')
-  set runtimepath^=$HOME/.vim
+  set runtimepath^=$HOME/.vim,$HOME/.vim/after
+  set packpath^=$HOME/.vim,$HOME/.vim/after
 endif
 
 let $VIMHOME = '~/.vim'
