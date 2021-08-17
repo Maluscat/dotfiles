@@ -3,8 +3,6 @@ if has('win32')
   set packpath^=$HOME/.vim,$HOME/.vim/after
 endif
 
-let $VIMHOME = '~/.vim'
-
 " Import default vim
 source $VIMRUNTIME/defaults.vim
 
@@ -48,8 +46,8 @@ set noswapfile
 set undofile
 set backup
 " set directory^=$VIMHOME/tmp/.swp//
-set backupdir^=$VIMHOME/tmp/.backup//
-set undodir^=$VIMHOME/tmp/.undo//
+set backupdir=~/.vim/tmp/.backup//
+set undodir=~/.vim/tmp/.undo//
 
 " Session handling
 set sessionoptions-=options
