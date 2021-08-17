@@ -175,6 +175,9 @@ let g:UltiSnipsListSnippets = "<C-l>"
 
 let g:UltiSnipsUsePythonVersion = 3
 
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
+
 let NERDTreeHijackNetrw = 1
 " Hack to prevent devicons from being cut off
 set ambiwidth=double
