@@ -84,7 +84,7 @@ augroup END
 
 nnoremap <C-p> <C-f>
 
-nnoremap <leader><CR> i<CR><ESC>
+nnoremap <leader><CR> a<CR><ESC>
 
 nnoremap <leader>o o<ESC>O
 
