@@ -1,6 +1,9 @@
 if has('win32')
-  set runtimepath^=$HOME/.vim,$HOME/.vim/after
-  set packpath^=$HOME/.vim,$HOME/.vim/after
+  set runtimepath^=$HOME/.vim runtimepath+=$HOME/.vim/after
+  set packpath^=$HOME/.vim packpath+=$HOME/.vim/after
+
+  set runtimepath-=$HOME/vimfiles runtimepath-=$HOME/vimfiles/after
+  set packpath-=$HOME/vimfiles packpath-=$HOME/vimfiles/after
 endif
 
 " Import default vim
