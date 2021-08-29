@@ -79,7 +79,7 @@ augroup END
 
 " --- Remaps & Shortcuts ---
 
-nnoremap <C-m> <C-f>
+nnoremap <C-p> <C-f>
 
 nnoremap <leader><CR> i<CR><ESC>
 
