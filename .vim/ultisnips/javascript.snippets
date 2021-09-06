@@ -1,0 +1,55 @@
+snippet for "for (let i ...)"
+for (let ${1:i} = 0; $1 < ${2:${3:arr}.length}; $1++) {
+  ${4:$3[$1]$0}
+}
+endsnippet
+
+snippet forv "for (var i ...)"
+for (var ${1:i} = 0; $1 < ${2:${3:arr}.length}; $1++) {
+  ${4:$3[$1]$0}
+}
+endsnippet
+
+snippet fori "for (const propName in object) ..."
+for (const ${1:propName} in $2) {
+  ${3:const ${4:propVal} = $2[$1];}$0
+}
+endsnippet
+
+snippet forl "for (const l of nodeList) ..."
+for (const l of ${1:nodeList}) ${2:l.addEventListener('${3:click}', $4)};
+endsnippet
+
+snippet f "Anonymous function"
+function($1) {
+  $0
+}
+endsnippet
+
+snippet af "Arrow function"
+($1) => ${2:{
+  $0
+}}
+endsnippet
+
+snippet ae "addEventListener"
+${1:document}.addEventListener('${2:click}', $3);
+endsnippet
+
+snippet aef "addEventListener with anon function"
+${1:document}.addEventListener('${2:click}', function(e) {
+  $0
+});
+endsnippet
+
+snippet gid "document.getElementById(...)"
+document.getElementById('$1');
+endsnippet
+
+snippet qs "document.querySelector(...)"
+${1:document}.querySelector('$1');
+endsnippet
+
+snippet qsa "document.querySelectorAll(...)"
+${1:document}.querySelectorAll('$1');
+endsnippet

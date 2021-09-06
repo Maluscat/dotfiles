@@ -7,4 +7,4 @@
 /.vim/*
 !/.vim/ft*/
 !/.vim/after/
-
+!/.vim/ultisnips/
