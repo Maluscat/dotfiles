@@ -6,8 +6,10 @@ if has('win32')
   set packpath-=$HOME/vimfiles packpath-=$HOME/vimfiles/after
 endif
 
-" Import default vim
-source $VIMRUNTIME/defaults.vim
+if !has('nvim')
+  " Import default vim
+  source $VIMRUNTIME/defaults.vim
+endif
 
 " This overrides windows-exclusive behaviours, like special mouse and selection behaviour
 behave xterm
