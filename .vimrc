@@ -28,6 +28,9 @@ set shiftwidth=2
 set tabstop=2
 set expandtab
 
+" Line height
+set linespace=2
+
 set foldmethod=syntax
 set foldlevelstart=99
 
