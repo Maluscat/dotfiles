@@ -34,8 +34,6 @@ set termguicolors
 set wrap linebreak
 
 if has('win32')
-  set shell=pwsh
-
   if !has('nvim')
     set pythonthreehome=C:/Program\ Files/Python/Python39
   endif
