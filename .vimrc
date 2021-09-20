@@ -97,6 +97,9 @@ nnoremap <C-z> :tabnew<CR>
 nnoremap <C-Right> :tabnext<CR> 
 nnoremap <C-Left> :tabprev<CR>
 
+onoremap <silent>af :normal va}V<CR>
+vnoremap <silent>af :normal va}V<CR>
+
 command -nargs=? Count :%s/<args>//gn
 
 " Memorizing and switching to last active tab
