@@ -47,6 +47,7 @@ endif
 set encoding=UTF-8
 
 set splitright
+set splitbelow
 
 set noswapfile
 set undofile
