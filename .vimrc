@@ -127,6 +127,7 @@ Plug 'tpope/vim-repeat'
 
 Plug 'mhinz/vim-startify'
 Plug 'mhinz/vim-signify'
+Plug 'mhinz/vim-grepper'
 
 Plug 'preservim/nerdtree'
 Plug 'ryanoasis/vim-devicons'
@@ -187,6 +188,11 @@ let g:lightline = {
       \   'component_function': {
       \     'gitbranch': 'FugitiveHead'
       \   }
+      \ }
+
+" Grepper
+let g:grepper = {
+      \   'tools': [ 'rg', 'git' ]
       \ }
 
 let g:UltiSnipsExpandTrigger = "<C-s>"
