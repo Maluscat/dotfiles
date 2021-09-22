@@ -89,8 +89,12 @@ augroup END
 nnoremap <C-p> <C-f>
 
 nnoremap <leader><CR> a<CR><ESC>
-
 nnoremap <leader>o o<ESC>O
+
+nnoremap <leader>p :terminal pwsh<CR><c-w>L
+nnoremap <leader>c :e ~/.vimrc<CR>
+nnoremap <leader>C :SC<CR>
+nnoremap <leader>S :Startify<CR>
 
 nnoremap <C-s> :w<CR>
 
@@ -98,6 +102,7 @@ nnoremap <C-z> :tabnew<CR>
 nnoremap <C-Right> :tabnext<CR> 
 nnoremap <C-Left> :tabprev<CR>
 
+" Custom text object to select a whole function
 onoremap <silent>af :normal va}V<CR>
 vnoremap <silent>af :normal va}V<CR>
 
