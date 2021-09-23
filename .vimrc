@@ -91,6 +91,8 @@ nnoremap <C-p> <C-f>
 nnoremap <leader><CR> a<CR><ESC>
 nnoremap <leader>o o<ESC>O
 
+nnoremap <leader>g :Grepper<CR>
+nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>p :terminal pwsh<CR><c-w>L
 nnoremap <leader>c :e ~/.vimrc<CR>
 nnoremap <leader>C :SC<CR>
