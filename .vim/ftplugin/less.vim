@@ -22,22 +22,26 @@ def less_to_CSS(path):
     if 'main' in options:
         for main_file in options['main'].split('|'):
             main_file_path = path.parent / main_file
-            less_to_CSS(main_file_path)
+            return less_to_CSS(main_file_path)
     elif 'out' in options:
         sourcemap = ('sourcemap' in options) and options['sourcemap']
-        subprocess.run([
+        return subprocess.run([
             'lessc',
+            '--no-color',
             ('--source-map' if sourcemap == 'true' else ''),
             str(path),
             str(path.parent / options['out'])
-        ], shell=True)
+        ], shell=True, stderr=subprocess.PIPE).stderr
 
 
 def read_first_line(file_name):
     with open(file_name) as file:
         return file.readline()
 
-less_to_CSS(pathlib.Path(vim.eval('expand("%:p")')))
+output = less_to_CSS(pathlib.Path(vim.eval('expand("%:p")')))
+output = output.decode('UTF-8')
+if output:
+  print(output)
 
 EOF
 endfunction
