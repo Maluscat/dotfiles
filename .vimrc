@@ -144,8 +144,8 @@ Plug 'itchyny/lightline.vim'
 
 " syntax highlighting & language support
 Plug 'sheerun/vim-polyglot'
-
 Plug 'groenewege/vim-less'
+Plug 'lepture/vim-jinja'
 
 " snippets
 Plug 'SirVer/ultisnips'
