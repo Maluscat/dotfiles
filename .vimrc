@@ -173,7 +173,9 @@ nnoremap <C-f> :NERDTreeToggle<CR>
 " Startify
 let g:startify_bookmarks = [
 \	{'c': '~/.vimrc'},
-\	{'g': '~/.gvimrc'}
+\	{'g': '~/.gvimrc'},
+\	{'n': '~/init.vim'},
+\	{'i': '~/ginit.vim'}
 \ ]
 
 let g:startify_session_persistence = 1
