@@ -99,6 +99,11 @@ nnoremap <leader>c :e ~/.vimrc<CR>
 nnoremap <leader>C :SC<CR>
 nnoremap <leader>S :Startify<CR>
 
+" YouCompleteMe
+nnoremap <leader>l :YcmCompleter GoTo<CR>
+nnoremap <leader>R :YcmCompleter RefactorRename 
+noremap <leader>F :YcmCompleter Format<CR>
+
 nnoremap <C-s> :w<CR>
 
 nnoremap <C-z> :tabnew<CR>
