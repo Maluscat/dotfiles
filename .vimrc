@@ -106,7 +106,7 @@ noremap <leader>F :YcmCompleter Format<CR>
 
 nnoremap <C-s> :w<CR>
 
-nnoremap <C-z> :tabnew<CR>
+nnoremap <leader>z :tabnew<CR>
 nnoremap <C-Right> :tabnext<CR> 
 nnoremap <C-Left> :tabprev<CR>
 
