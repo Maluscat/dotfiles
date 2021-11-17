@@ -87,6 +87,8 @@ augroup END
 " --- Remaps & Shortcuts ---
 
 nnoremap <C-p> <C-f>
+nnoremap '' ``
+nnoremap `` ''
 
 nnoremap <leader><CR> a<CR><ESC>
 nnoremap <leader>o o<ESC>O
