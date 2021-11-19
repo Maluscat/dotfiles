@@ -1,5 +1,7 @@
-" start maximized
-au GUIEnter * simalt ~x
+if has('win32')
+  " start maximized
+  au GUIEnter * simalt ~x
+endif
 
 " NOTE: Copy font changes to ~|ginit.vim
 if !has("nvim")
