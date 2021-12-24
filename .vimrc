@@ -40,7 +40,7 @@ set wrap linebreak
 
 if has('win32')
   if !has('nvim')
-    set pythonthreehome=C:/Program\ Files/Python/Python39
+    set pythonthreehome=~/scoop/apps/python/current
   endif
 endif
 
