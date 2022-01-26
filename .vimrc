@@ -177,7 +177,8 @@ let g:startify_bookmarks = [
 \	{'c': '~/.vimrc'},
 \	{'g': '~/.gvimrc'},
 \	{'n': '~/init.vim'},
-\	{'i': '~/ginit.vim'}
+\	{'i': '~/ginit.vim'},
+\	{'r': '/dev/node/RobBot_yarn/main.js'}
 \ ]
 
 let g:startify_session_persistence = 1
