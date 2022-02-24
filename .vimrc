@@ -96,10 +96,15 @@ nnoremap <leader>o o<ESC>O
 nnoremap <leader>g :Grepper<CR>
 nnoremap <leader>G :Git<CR>
 nnoremap <leader>b :Buffers<CR>
-nnoremap <leader>p :terminal pwsh<CR><c-w>L
 nnoremap <leader>c :e ~/.vimrc<CR>
 nnoremap <leader>C :SC<CR>
 nnoremap <leader>S :Startify<CR>
+
+if has('nvim')
+  nnoremap <leader>p :vsplit<CR> :terminal pwsh<CR><C-w>L
+else
+  nnoremap <leader>p :terminal pwsh<CR><C-w>L
+end
 
 " YouCompleteMe
 nnoremap <leader>l :YcmCompleter GoTo<CR>
