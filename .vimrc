@@ -106,6 +106,10 @@ else
   nnoremap <leader>p :terminal pwsh<CR><C-w>L
 end
 
+" Toggle search highlight and clear highlight
+nnoremap <leader>N :set hlsearch!<CR>
+nnoremap <leader>n :nohlsearch<CR>
+
 " YouCompleteMe
 nnoremap <leader>l :YcmCompleter GoTo<CR>
 nnoremap <leader>R :YcmCompleter RefactorRename 
