@@ -112,8 +112,14 @@ nnoremap <leader>n :nohlsearch<CR>
 
 " YouCompleteMe
 nnoremap <leader>l :YcmCompleter GoTo<CR>
+nnoremap <leader>L :YcmCompleter GoToReferences<CR>
 nnoremap <leader>R :YcmCompleter RefactorRename 
-noremap <leader>F :YcmCompleter Format<CR>
+nnoremap <leader>O :YcmCompleter OrganizeImports<CR>
+nnoremap <leader>F :YcmCompleter Format<CR>
+nnoremap <leader>f :YcmCompleter FixIt<CR>
+nnoremap <leader>D :YcmCompleter GetDoc<CR>
+" <Plug> Keymaps have to me 'map's (non-recursive)
+nmap <leader>i <Plug>(YCMFindSymbolInWorkspace)
 
 nnoremap <C-s> :w<CR>
 
