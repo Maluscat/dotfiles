@@ -234,6 +234,15 @@ let g:UltiSnipsUsePythonVersion = 3
 
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_seed_identifiers_with_syntax = 1
+" let g:ycm_language_server = [
+"       \   {
+"       \     'name': 'deno',
+"       \     'cmdline': [ 'deno', 'lsp' ],
+"       \     'filetypes': [ 'typescript' ],
+"       \     'project_root_files': [ 'main.ts' ]
+"       \   }
+"       \ ]
 
 let g:NERDTreeHijackNetrw = 1
 let g:NERDTreeShowHidden = 1
