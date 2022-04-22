@@ -63,6 +63,10 @@ set sessionoptions-=options
 autocmd FileType * setlocal formatoptions-=c formatoptions-=o
 autocmd FileType *.vim setlocal formatoptions+=c
 
+if !has('win32')
+  autocmd GUIEnter * silent call system('wmctrl -ir ' . v:windowid . ' -b add,fullscreen')
+endif
+
 " Matching parens/braces style
 highlight MatchParen gui=bold cterm=bold ctermbg=none ctermfg=magenta
 
