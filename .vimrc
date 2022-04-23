@@ -91,6 +91,7 @@ nnoremap '' ``
 nnoremap `` ''
 
 nnoremap <leader><CR> a<CR><ESC>
+nnoremap <leader><kEnter> a<CR><ESC>
 nnoremap <leader>o o<ESC>O
 
 nnoremap <leader>g :Grepper<CR>
@@ -109,6 +110,10 @@ end
 " Toggle search highlight and clear highlight
 nnoremap <leader>N :set hlsearch!<CR>
 nnoremap <leader>n :nohlsearch<CR>
+
+" NERDTree
+nnoremap <leader>m :NERDTreeMirror<CR>
+nnoremap <C-f> :NERDTreeToggle<CR>
 
 " YouCompleteMe
 nnoremap <leader>l :YcmCompleter GoTo<CR>
@@ -185,7 +190,8 @@ call plug#end()
 
 " --- Plugins Configuration ---
 
-nnoremap <C-f> :NERDTreeToggle<CR>
+" NERDTree
+let g:NERDTreeMapCustomOpen = '<kEnter>'
 
 " Startify
 let g:startify_bookmarks = [
