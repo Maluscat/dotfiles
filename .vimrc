@@ -54,7 +54,12 @@ set undofile
 set backup
 " set directory^=$VIMHOME/tmp/.swp//
 set backupdir=~/.vim/tmp/.backup//
-set undodir=~/.vim/tmp/.undo//
+
+if has('nvim')
+  set undodir=~/.vim/tmp/.undo.nvim//
+else
+  set undodir=~/.vim/tmp/.undo//
+endif
 
 " Session handling
 set sessionoptions-=options
