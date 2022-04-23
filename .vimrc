@@ -99,6 +99,8 @@ nnoremap <leader><CR> a<CR><ESC>
 nnoremap <leader><kEnter> a<CR><ESC>
 nnoremap <leader>o o<ESC>O
 
+nnoremap <leader>P :echo expand('%:p')<CR>
+
 nnoremap <leader>g :Grepper<CR>
 nnoremap <leader>G :Git<CR>
 nnoremap <leader>b :Buffers<CR>
