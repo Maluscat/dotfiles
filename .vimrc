@@ -168,15 +168,17 @@ Plug 'mhinz/vim-startify'
 Plug 'mhinz/vim-signify'
 Plug 'mhinz/vim-grepper'
 
-Plug 'preservim/nerdtree'
-Plug 'ryanoasis/vim-devicons'
-
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 Plug 'jiangmiao/auto-pairs'
 
 Plug 'itchyny/lightline.vim'
+
+" NERDTree
+Plug 'preservim/nerdtree'
+Plug 'ryanoasis/vim-devicons'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 " syntax highlighting & language support
 Plug 'sheerun/vim-polyglot'
