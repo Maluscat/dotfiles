@@ -208,8 +208,8 @@ let g:NERDTreeMapCustomOpen = '<kEnter>'
 let g:startify_bookmarks = [
 \	{'c': '~/.vimrc'},
 \	{'g': '~/.gvimrc'},
-\	{'n': '~/init.vim'},
-\	{'i': '~/ginit.vim'},
+\	{'n': '~/nvim-init.vim'},
+\	{'i': '~/nvim-ginit.vim'},
 \	{'r': '/dev/node/RobBot_yarn/main.js'}
 \ ]
 
