@@ -54,7 +54,12 @@ set undofile
 set backup
 " set directory^=$VIMHOME/tmp/.swp//
 set backupdir=~/.vim/tmp/.backup//
-set undodir=~/.vim/tmp/.undo//
+
+if has('nvim')
+  set undodir=~/.vim/tmp/.undo.nvim//
+else
+  set undodir=~/.vim/tmp/.undo//
+endif
 
 " Session handling
 set sessionoptions-=options
@@ -95,7 +100,10 @@ nnoremap '' ``
 nnoremap `` ''
 
 nnoremap <leader><CR> a<CR><ESC>
+nnoremap <leader><kEnter> a<CR><ESC>
 nnoremap <leader>o o<ESC>O
+
+nnoremap <leader>P :echo expand('%:p')<CR>
 
 nnoremap <leader>g :Grepper<CR>
 nnoremap <leader>G :Git<CR>
@@ -105,19 +113,31 @@ nnoremap <leader>C :SC<CR>
 nnoremap <leader>S :Startify<CR>
 
 if has('nvim')
-  nnoremap <leader>p :vsplit<CR> :terminal pwsh<CR><C-w>L
+  nnoremap <leader>p :vsplit<CR> :terminal pwsh<CR><C-w>Li
+  tnoremap <ESC> <C-\><C-n>
 else
   nnoremap <leader>p :terminal pwsh<CR><C-w>L
+  tnoremap <C-w>q <C-\><C-n>:bd!<CR>
 end
 
 " Toggle search highlight and clear highlight
 nnoremap <leader>N :set hlsearch!<CR>
 nnoremap <leader>n :nohlsearch<CR>
 
+" NERDTree
+nnoremap <leader>m :NERDTreeMirror<CR>
+nnoremap <C-f> :NERDTreeToggle<CR>
+
 " YouCompleteMe
 nnoremap <leader>l :YcmCompleter GoTo<CR>
+nnoremap <leader>L :YcmCompleter GoToReferences<CR>
 nnoremap <leader>R :YcmCompleter RefactorRename 
-noremap <leader>F :YcmCompleter Format<CR>
+nnoremap <leader>O :YcmCompleter OrganizeImports<CR>
+nnoremap <leader>F :YcmCompleter Format<CR>
+nnoremap <leader>f :YcmCompleter FixIt<CR>
+nnoremap <leader>D :YcmCompleter GetDoc<CR>
+" <Plug> Keymaps have to me 'map's (non-recursive)
+nmap <leader>i <Plug>(YCMFindSymbolInWorkspace)
 
 nnoremap <C-s> :w<CR>
 
@@ -152,15 +172,17 @@ Plug 'mhinz/vim-startify'
 Plug 'mhinz/vim-signify'
 Plug 'mhinz/vim-grepper'
 
-Plug 'preservim/nerdtree'
-Plug 'ryanoasis/vim-devicons'
-
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 Plug 'jiangmiao/auto-pairs'
 
 Plug 'itchyny/lightline.vim'
+
+" NERDTree
+Plug 'preservim/nerdtree'
+Plug 'ryanoasis/vim-devicons'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 " syntax highlighting & language support
 Plug 'sheerun/vim-polyglot'
@@ -183,14 +205,15 @@ call plug#end()
 
 " --- Plugins Configuration ---
 
-nnoremap <C-f> :NERDTreeToggle<CR>
+" NERDTree
+let g:NERDTreeMapCustomOpen = '<kEnter>'
 
 " Startify
 let g:startify_bookmarks = [
 \	{'c': '~/.vimrc'},
 \	{'g': '~/.gvimrc'},
-\	{'n': '~/init.vim'},
-\	{'i': '~/ginit.vim'},
+\	{'n': '~/nvim-init.vim'},
+\	{'i': '~/nvim-ginit.vim'},
 \	{'r': '/dev/node/RobBot_yarn/main.js'}
 \ ]
 
@@ -232,6 +255,15 @@ let g:UltiSnipsUsePythonVersion = 3
 
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_seed_identifiers_with_syntax = 1
+" let g:ycm_language_server = [
+"       \   {
+"       \     'name': 'deno',
+"       \     'cmdline': [ 'deno', 'lsp' ],
+"       \     'filetypes': [ 'typescript' ],
+"       \     'project_root_files': [ 'main.ts' ]
+"       \   }
+"       \ ]
 
 let g:NERDTreeHijackNetrw = 1
 let g:NERDTreeShowHidden = 1
