@@ -1,3 +1,74 @@
+# ---- OVERRIDES ----
+snippet if "if (...) { ... }"
+if ($1) {
+  $0
+}
+endsnippet
+
+snippet ife "if (...) { ... } else { ... }"
+if ($1) {
+  $1
+} else ${2:{
+  $0
+}}
+endsnippet
+
+snippet ter
+$1 ? $2 : $0
+endsnippet
+
+snippet switch
+switch ($1) {
+  case '$3':
+    $4
+    break;
+  case$0
+  default:
+    $2
+}
+endsnippet
+
+snippet case "case '...': ... break"
+case '$1':
+  $2
+  break;
+endsnippet
+
+snippet try "try { ... } catch(e) { ... }"
+try {
+  $1
+} catch (e) {
+  $0
+}
+endsnippet
+
+snippet terr
+	throw new Error('$1');
+endsnippet
+
+snippet ret
+	return $1;
+endsnippet
+
+snippet forr "reversed for (...) {...}"
+  for (let ${1:i} = ${2:${3:arr}.length}; $1 >= 0; $1--) {
+    ${4:$3[$1]$0}
+	}
+endsnippet
+
+snippet wh "(...) { ... }"
+	while ($1) {
+		$0
+	}
+endsnippet
+
+snippet do "do { ... } while (...)"
+	do {
+		$0
+	} while ($1);
+endsnippet
+
+# ---- OWN ----
 snippet for "for (let i ...)"
 for (let ${1:i} = 0; $1 < ${2:${3:arr}.length}; $1++) {
   ${4:$3[$1]$0}
@@ -32,6 +103,12 @@ snippet af "Arrow function"
 }}
 endsnippet
 
+snippet iife "Immediately-Invoked Function Expression"
+(function($1) {
+  $0
+}($1));
+endsnippet
+
 snippet ae "addEventListener"
 ${1:document}.addEventListener('${2:click}', $3);
 endsnippet
@@ -47,9 +124,17 @@ document.getElementById('$1');
 endsnippet
 
 snippet qs "document.querySelector(...)"
-${1:document}.querySelector('$1');
+${1:document}.querySelector('$2');
 endsnippet
 
 snippet qsa "document.querySelectorAll(...)"
-${1:document}.querySelectorAll('$1');
+${1:document}.querySelectorAll('$2');
+endsnippet
+
+snippet cel "document.createElement(...)"
+document.createElement('$1');
+endsnippet
+
+snippet clone "Node.cloneNode(true?)"
+$1.cloneNode(${2:true});
 endsnippet
