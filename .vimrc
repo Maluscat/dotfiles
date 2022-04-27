@@ -206,7 +206,11 @@ call plug#end()
 " --- Plugins Configuration ---
 
 " NERDTree
-let g:NERDTreeMapCustomOpen = '<kEnter>'
+if has('win32')
+  let g:NERDTreeMapCustomOpen = '<kEnter>'
+else
+  let g:NERDTreeMapCustomOpen = '<CR>'
+endif
 
 " Startify
 let g:startify_bookmarks = [
