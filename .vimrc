@@ -179,6 +179,8 @@ Plug 'jiangmiao/auto-pairs'
 
 Plug 'itchyny/lightline.vim'
 
+Plug 'konfekt/FastFold'
+
 " NERDTree
 Plug 'preservim/nerdtree'
 Plug 'ryanoasis/vim-devicons'
