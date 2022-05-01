@@ -49,6 +49,8 @@ set encoding=UTF-8
 set splitright
 set splitbelow
 
+set hidden " Background buffers
+
 set noswapfile
 set undofile
 set backup
