@@ -129,6 +129,9 @@ nnoremap <leader>n :nohlsearch<CR>
 nnoremap <leader>m :NERDTreeMirror<CR>
 nnoremap <C-f> :NERDTreeToggle<CR>
 
+" Tagbar
+nnoremap <C-m> :TagbarToggle<CR>
+
 " YouCompleteMe
 nnoremap <leader>l :YcmCompleter GoTo<CR>
 nnoremap <leader>L :YcmCompleter GoToReferences<CR>
@@ -182,6 +185,8 @@ Plug 'itchyny/lightline.vim'
 
 Plug 'konfekt/FastFold'
 
+Plug 'preservim/tagbar'
+
 " NERDTree
 Plug 'preservim/nerdtree'
 Plug 'ryanoasis/vim-devicons'
@@ -214,6 +219,9 @@ if has('win32')
 else
   let g:NERDTreeMapCustomOpen = '<CR>'
 endif
+
+" Tagbar
+let g:tagbar_autofocus = 1
 
 " Startify
 let g:startify_bookmarks = [
