@@ -113,12 +113,11 @@ nnoremap <leader>C :SC<CR>
 nnoremap <leader>S :Startify<CR>
 
 if has('nvim')
-  nnoremap <leader>p :vsplit<CR> :terminal pwsh<CR><C-w>Li
-  tnoremap <ESC> <C-\><C-n>
+  nnoremap <leader>p :terminal pwsh<CR><C-w>Li
 else
-  nnoremap <leader>p :terminal pwsh<CR><C-w>L
-  tnoremap <C-w>q <C-\><C-n>:bd!<CR>
+  nnoremap <leader>p :terminal ++curwin ++kill=term pwsh<CR><C-w>L
 end
+tnoremap <ESC> <C-\><C-n>
 
 " Toggle search highlight and clear highlight
 nnoremap <leader>N :set hlsearch!<CR>
