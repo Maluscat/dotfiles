@@ -130,7 +130,7 @@ nnoremap <leader>m :NERDTreeMirror<CR>
 nnoremap <C-f> :NERDTreeToggle<CR>
 
 " Tagbar
-nnoremap <C-m> :TagbarToggle<CR>
+nnoremap <C-g> :TagbarToggle<CR>
 
 " YouCompleteMe
 nnoremap <leader>l :YcmCompleter GoTo<CR>
@@ -222,6 +222,7 @@ endif
 
 " Tagbar
 let g:tagbar_autofocus = 1
+let g:tagbar_sort = 0
 
 " Startify
 let g:startify_bookmarks = [
