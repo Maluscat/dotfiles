@@ -214,7 +214,7 @@ call plug#end()
 " --- Plugins Configuration ---
 
 " NERDTree
-if has('win32')
+if has('win32') && has('nvim')
   let g:NERDTreeMapCustomOpen = '<kEnter>'
 else
   let g:NERDTreeMapCustomOpen = '<CR>'
