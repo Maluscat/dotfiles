@@ -114,13 +114,6 @@ nnoremap <leader>c :e ~/.vimrc<CR>
 nnoremap <leader>C :SC<CR>
 nnoremap <leader>S :Startify<CR>
 
-if has('nvim')
-  nnoremap <leader>p :terminal pwsh<CR><C-w>Li
-else
-  nnoremap <leader>p :terminal ++curwin ++kill=term pwsh<CR><C-w>L
-end
-tnoremap <ESC> <C-\><C-n>
-
 " Toggle search highlight and clear highlight
 nnoremap <leader>N :set hlsearch!<CR>
 nnoremap <leader>n :nohlsearch<CR>
@@ -160,6 +153,22 @@ autocmd TabLeave * let g:lasttab = tabpagenr()
 nnoremap <leader>t :exe "tabn ".g:lasttab<CR>
 
 nnoremap <leader>T :tabfirst<CR>
+
+" Terminal
+if has('nvim')
+  if has('win32')
+    nnoremap <leader>p :terminal pwsh<CR><C-w>Li
+  else
+    nnoremap <leader>p :terminal<CR><C-w>Li
+  endif
+else
+  if has('win32')
+    nnoremap <leader>p :terminal ++curwin ++kill=term pwsh<CR><C-w>L
+  else
+    nnoremap <leader>p :terminal ++curwin ++kill=term<CR><C-w>L
+  endif
+endif
+tnoremap <ESC> <C-\><C-n>
 
 
 " --- Plug ---
