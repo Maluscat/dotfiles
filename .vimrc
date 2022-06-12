@@ -74,6 +74,14 @@ if !has('win32')
   autocmd GUIEnter * silent call system('wmctrl -ir ' . v:windowid . ' -b add,fullscreen')
 endif
 
+" From https://stackoverflow.com/a/5357194
+" Create a new motion `cp` for replacing a word with the paste buffer
+nmap <silent> cp :set opfunc=ChangePaste<CR>g@
+function ChangePaste(type, ...)
+    silent exe "normal! `[v`]\"_c"
+    silent exe "normal! p"
+endfunction
+
 " Matching parens/braces style
 highlight MatchParen gui=bold cterm=bold ctermbg=none ctermfg=magenta
 
