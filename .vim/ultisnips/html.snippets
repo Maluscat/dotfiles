@@ -1,0 +1,28 @@
+snippet link "HTML <link>" w
+<link rel="${1:stylesheet}" href="${2:/script/main.css}">
+endsnippet
+
+snippet script "HTML <script>" w
+<script>
+	${0:${VISUAL}}
+</script>
+endsnippet
+
+snippet scriptsrc "HTML <script src...>" w
+<script src="$1"></script>
+endsnippet
+
+snippet html "HTML basic structure"
+	<!DOCTYPE html>
+	<html>
+		<head>
+			<meta charset="utf-8">
+			<meta name="viewport" content="width=device-width">
+			<title>${1}</title>${2:
+			link${3}}
+		</head>
+		<body>
+			${0}
+		</body>
+	</html>
+endsnippet
