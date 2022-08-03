@@ -178,8 +178,8 @@ if has('nvim')
     nnoremap <leader>p :terminal<CR><C-w>Li
   endif
 else
-  nnoremap <leader>p :call SwitchToFirstTerminalAndBackOrOpen()<CR>
-  nnoremap <leader>P :call OpenNewTerminal()<CR>
+  nnoremap <leader>p :call <SID>SwitchToFirstTerminalAndBackOrOpen()<CR>
+  nnoremap <leader>P :call <SID>OpenNewTerminal()<CR>
 endif
 tnoremap <ESC> <C-\><C-n>
 
