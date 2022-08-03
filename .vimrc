@@ -115,7 +115,7 @@ nnoremap <leader><CR> a<CR><ESC>
 nnoremap <leader><kEnter> a<CR><ESC>
 nnoremap <leader>o o<ESC>O
 
-nnoremap <leader>P :echo expand('%:p')<CR>
+nnoremap <leader>h :echo expand('%:p')<CR>
 
 nnoremap <leader>g :Grepper<CR>
 nnoremap <leader>G :Git<CR>
@@ -166,19 +166,42 @@ nnoremap <leader>T :tabfirst<CR>
 
 " Terminal
 if has('nvim')
+  " I can't bother with nvim right now
   if has('win32')
     nnoremap <leader>p :terminal pwsh<CR><C-w>Li
   else
     nnoremap <leader>p :terminal<CR><C-w>Li
   endif
 else
-  if has('win32')
-    nnoremap <leader>p :terminal ++curwin ++kill=term pwsh<CR><C-w>L
-  else
-    nnoremap <leader>p :terminal ++curwin ++kill=term<CR><C-w>L
-  endif
+  nnoremap <leader>p :call SwitchToFirstTerminalAndBackOrOpen()<CR>
+  nnoremap <leader>P :call OpenNewTerminal()<CR>
 endif
 tnoremap <ESC> <C-\><C-n>
+
+
+function SwitchToFirstTerminalAndBackOrOpen()
+  if getbufvar(bufnr(), '&buftype') == 'terminal'
+    " From https://vi.stackexchange.com/a/18365
+    " NOTE: This could have consequences
+    "   (not checking for the window, but for the buffer)
+    execute 'buffer ' .. bufnr('#')
+  else 
+    let openTerminals = term_list()
+    if len(openTerminals) == 0
+      call OpenNewTerminal()
+    else
+      execute 'buffer ' .. openTerminals[0]
+    endif
+  endif
+endfunction
+
+function OpenNewTerminal()
+  let termType = has('win32') ? 'pwsh' : &l:shell
+  call term_start(termType, {
+    \   'curwin': 1,
+    \   'term_kill': 'term'
+    \ })
+endfunction
 
 
 " --- Plug ---
