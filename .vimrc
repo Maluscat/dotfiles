@@ -248,6 +248,8 @@ Plug 'honza/vim-snippets'
 " autocomplete
 Plug 'ycm-core/YouCompleteMe'
 
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 " Themes
 Plug 'bluz71/vim-nightfly-guicolors'
 Plug 'bluz71/vim-moonfly-colors'
@@ -329,6 +331,8 @@ let g:NERDTreeHijackNetrw = 1
 let g:NERDTreeShowHidden = 1
 
 let g:AutoPairsMultilineClose = 0
+
+" let g:coc_config_home = '~/.vim'
 
 colorscheme moonfly
 
