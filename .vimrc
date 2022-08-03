@@ -81,10 +81,10 @@ endif
 # From https://stackoverflow.com/a/5357194
 # Create a new motion `cp` for replacing a word with the paste buffer
 nmap <silent> cp :set opfunc=ChangePaste<CR>g@
-function ChangePaste(type, ...)
-    silent exe "normal! `[v`]\"_c"
-    silent exe "normal! p"
-endfunction
+def ChangePaste()
+  silent exe "normal! `[v`]\"_c"
+  silent exe "normal! p"
+enddef
 
 # Matching parens/braces style
 highlight MatchParen gui=bold cterm=bold ctermbg=none ctermfg=magenta
@@ -184,29 +184,29 @@ endif
 tnoremap <ESC> <C-\><C-n>
 
 
-function SwitchToFirstTerminalAndBackOrOpen()
+def SwitchToFirstTerminalAndBackOrOpen()
   if getbufvar(bufnr(), '&buftype') == 'terminal'
     # From https://vi.stackexchange.com/a/18365
     # NOTE: This could have consequences
     #   (not checking for the window, but for the buffer)
     execute 'buffer ' .. bufnr('#')
   else 
-    let openTerminals = term_list()
+    var openTerminals = term_list()
     if len(openTerminals) == 0
-      call OpenNewTerminal()
+      OpenNewTerminal()
     else
       execute 'buffer ' .. openTerminals[0]
     endif
   endif
-endfunction
+enddef
 
-function OpenNewTerminal()
-  let termType = has('win32') ? 'pwsh' : &l:shell
-  call term_start(termType, {
+def OpenNewTerminal()
+  var termType = has('win32') ? 'pwsh' : &l:shell
+  term_start(termType, {
     \   'curwin': 1,
     \   'term_kill': 'term'
     \ })
-endfunction
+enddef
 
 
 # --- Plug ---
@@ -366,15 +366,17 @@ set autoread
 au FocusGained,BufEnter * checktime
 
 # Delete trailing white space on save, useful for some filetypes ;)
-fun! CleanExtraSpaces()
-	let save_cursor = getpos(".")
-	let old_query = getreg('/')
-	silent! %s/\s\+$//e
-	call setpos('.', save_cursor)
-	call setreg('/', old_query)
-endfun
+def CleanExtraSpaces()
+  var save_cursor = getpos(".")
+  var old_query = getreg('/')
+  silent! :%s/\s\+$//e
+  setpos('.', save_cursor)
+  setreg('/', old_query)
+enddef
 
 if has("autocmd")
   autocmd BufWritePre *.txt,*.js,*.py,*.wiki,*.sh,*.coffee :call CleanExtraSpaces()
 endif
 
+# --- Compile every `def` function ---
+defcompile
