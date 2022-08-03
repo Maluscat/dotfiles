@@ -163,8 +163,9 @@ vnoremap <silent>af :normal va}V<CR>
 command -nargs=? Count :%s/<args>//gn
 
 # Memorizing and switching to last active tab
-autocmd TabLeave * let g:lasttab = tabpagenr()
-nnoremap <leader>t :exe "tabn ".g:lasttab<CR>
+g:lasttab = 1
+autocmd TabLeave * g:lasttab = tabpagenr()
+nnoremap <leader>t :exe 'tabn ' .. g:lasttab<CR>
 
 nnoremap <leader>T :tabfirst<CR>
 
