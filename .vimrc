@@ -203,9 +203,9 @@ enddef
 def OpenNewTerminal()
   var termType = has('win32') ? 'pwsh' : &l:shell
   term_start(termType, {
-    \   'curwin': 1,
-    \   'term_kill': 'term'
-    \ })
+    'curwin': 1,
+    'term_kill': 'term'
+  })
 enddef
 
 
@@ -275,12 +275,12 @@ g:tagbar_sort = 0
 
 # Startify
 g:startify_bookmarks = [
-\	{'c': '~/.vimrc'},
-\	{'g': '~/.gvimrc'},
-\	{'n': '~/nvim-init.vim'},
-\	{'i': '~/nvim-ginit.vim'},
-\	{'r': '/dev/node/RobBot_yarn/main.js'}
-\ ]
+  {'c': '~/.vimrc'},
+  {'g': '~/.gvimrc'},
+  {'n': '~/nvim-init.vim'},
+  {'i': '~/nvim-ginit.vim'},
+  {'r': '/dev/node/RobBot_yarn/main.js'}
+]
 
 g:startify_session_persistence = 1
 g:startify_session_sort = 1
@@ -292,22 +292,22 @@ set updatetime=100
 # Lightline
 set noshowmode
 g:lightline = {
-      \   'colorscheme': 'moonfly',
-      \   'active': {
-      \     'left': [
-      \       [ 'mode', 'paste' ],
-      \       [ 'readonly', 'filename', 'gitbranch', 'modified' ]
-      \     ]
-      \   },
-      \   'component_function': {
-      \     'gitbranch': 'FugitiveHead'
-      \   }
-      \ }
+  'colorscheme': 'moonfly',
+  'active': {
+    'left': [
+      [ 'mode', 'paste' ],
+      [ 'readonly', 'filename', 'gitbranch', 'modified' ]
+    ]
+  },
+  'component_function': {
+    'gitbranch': 'FugitiveHead'
+  }
+}
 
 # Grepper
 g:grepper = {
-      \   'tools': [ 'rg', 'git' ]
-      \ }
+  'tools': [ 'rg', 'git' ]
+}
 
 # Ultisnipts
 g:UltiSnipsExpandTrigger = "<C-s>"
@@ -324,13 +324,13 @@ g:ycm_autoclose_preview_window_after_completion = 1
 g:ycm_autoclose_preview_window_after_insertion = 1
 g:ycm_seed_identifiers_with_syntax = 1
 # g:ycm_language_server = [
-#       \   {
-#       \     'name': 'deno',
-#       \     'cmdline': [ 'deno', 'lsp' ],
-#       \     'filetypes': [ 'typescript' ],
-#       \     'project_root_files': [ 'main.ts' ]
-#       \   }
-#       \ ]
+#   {
+#     'name': 'deno',
+#     'cmdline': [ 'deno', 'lsp' ],
+#     'filetypes': [ 'typescript' ],
+#     'project_root_files': [ 'main.ts' ]
+#   }
+# ]
 
 # NERDTree
 g:NERDTreeHijackNetrw = 1
