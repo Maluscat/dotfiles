@@ -65,6 +65,8 @@ endif
 
 " Session handling
 set sessionoptions-=options
+" FastFold compatibility
+set sessionoptions-=folds
 
 " Disable automatic comments
 autocmd FileType * setlocal formatoptions-=c formatoptions-=o
