@@ -110,6 +110,7 @@ augroup END
 # --- Remaps & Shortcuts ---
 
 nnoremap <C-w>Q :bd<CR>
+nnoremap Y y$
 
 nnoremap <C-p> <C-f>
 nnoremap '' ``
