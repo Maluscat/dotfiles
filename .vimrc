@@ -81,7 +81,7 @@ endif
 # From https://stackoverflow.com/a/5357194
 # Create a new motion `cp` for replacing a word with the paste buffer
 nmap <silent> cp :set opfunc=ChangePaste<CR>g@
-def ChangePaste()
+def g:ChangePaste(type: string)
   silent exe "normal! `[v`]\"_c"
   silent exe "normal! p"
 enddef
