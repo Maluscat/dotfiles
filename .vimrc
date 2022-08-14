@@ -75,7 +75,7 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=o
 autocmd FileType *.vim setlocal formatoptions+=c
 
 if !has('win32')
-  autocmd GUIEnter * silent call system('wmctrl -ir ' . v:windowid . ' -b add,fullscreen')
+  autocmd GUIEnter * silent call system('wmctrl -ir ' .. v:windowid .. ' -b add,fullscreen')
 endif
 
 # From https://stackoverflow.com/a/5357194
