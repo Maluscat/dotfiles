@@ -35,6 +35,11 @@ set linespace=2
 
 set foldmethod=syntax
 set foldlevelstart=99
+g:javaScript_fold = 1
+g:php_folding = 1
+g:markdown_folding = 1
+g:sh_fold_enabled = 1
+g:rust_fold = 1
 
 set termguicolors
 
@@ -262,6 +267,10 @@ call plug#end()
 
 
 # --- Plugins Configuration ---
+
+# FastFold
+## This activates FastFold regardles of the number of lines
+g:fastfold_minlines = 0
 
 # NERDTree
 if has('win32') && has('nvim')
