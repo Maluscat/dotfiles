@@ -126,6 +126,8 @@ nnoremap `` ''
 nnoremap '. `.
 nnoremap `. '.
 
+noremap gs :s///g<Left><Left>
+
 nnoremap <leader><CR> a<CR><ESC>
 nnoremap <leader><kEnter> a<CR><ESC>
 nnoremap <leader>o o<ESC>O
