@@ -123,6 +123,8 @@ nnoremap Y y$
 nnoremap <C-p> <C-f>
 nnoremap '' ``
 nnoremap `` ''
+nnoremap '. `.
+nnoremap `. '.
 
 nnoremap <leader><CR> a<CR><ESC>
 nnoremap <leader><kEnter> a<CR><ESC>
