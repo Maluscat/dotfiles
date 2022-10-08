@@ -143,6 +143,7 @@ nnoremap <leader>n :nohlsearch<CR>
 
 # NERDTree
 nnoremap <leader>m :NERDTreeMirror<CR>
+nnoremap <leader>M :NERDTreeFind<CR>
 nnoremap <C-f> :NERDTreeToggle<CR>
 
 # Tagbar
