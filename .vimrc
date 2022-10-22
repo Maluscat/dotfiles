@@ -346,7 +346,12 @@ g:ycm_seed_identifiers_with_syntax = 1
 #     'name': 'deno',
 #     'cmdline': [ 'deno', 'lsp' ],
 #     'filetypes': [ 'typescript' ],
-#     'project_root_files': [ 'main.ts' ]
+#     'project_root_files': [ 'main.ts' ],
+#     'capabilities': {
+#       'enable': true,
+#       'lint': true,
+#       'unstable': false
+#     }
 #   }
 # ]
 
