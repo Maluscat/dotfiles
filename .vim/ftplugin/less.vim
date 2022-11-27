@@ -16,8 +16,6 @@ import pathlib
 import subprocess
 
 def less_to_CSS(path):
-    print(path)
-
     firstline = read_first_line(path)[2:]
 
     options = {}
