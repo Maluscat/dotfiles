@@ -1,8 +1,14 @@
+vim9script noclear
+
 UltiSnipsAddFiletypes css.less
 
-autocmd BufWritePost *.less call LessToCSS()
+augroup lesstocss
+  autocmd!
+  autocmd BufWritePost *.less call LessToCSS()
+augroup END
 
-function! LessToCSS()
+if !exists("*LessToCSS")
+def LessToCSS()
 python3 << EOF
 
 import vim
@@ -10,6 +16,8 @@ import pathlib
 import subprocess
 
 def less_to_CSS(path):
+    print(path)
+
     firstline = read_first_line(path)[2:]
 
     options = {}
@@ -44,28 +52,29 @@ if output:
   print(output)
 
 EOF
-endfunction
+enddef
+endif
 
-" function LessToCSS(path = expand("%:p"), line = getline(1))
-"   let options = {}
-"   for option in split(a:line[2:], ',')
-"     let splitOption = split(option, ':')
-"     let options[trim(splitOption[0])] = trim(splitOption[1])
-"   endfor
-
-"   " If the options contain a 'main' flag, relay to the given file
-"   if has_key(options, 'main')
-"     for mainFile in split(options.main, '|')
-"       let mainPath = fnamemodify(a:path, ':h') . '/' . mainFile
-"       call LessToCSS(mainPath, readfile(mainPath)[:1][0])
-"     endfor
-"   elseif has_key(options, 'out')
-"     " we will ignore compress...
-"     silent execute
-"         \ '!lessc '
-"         \ . (get(options, 'sourcemap') == 'true' ? '--source-map ' : '')
-"         \ . a:path . ' '
-"         \ . fnamemodify(a:path, ':h') . '/' . options.out
-"   endif
-" endfunction
+# function LessToCSS(path = expand("%:p"), line = getline(1))
+#   let options = {}
+#   for option in split(a:line[2:], ',')
+#     let splitOption = split(option, ':')
+#     let options[trim(splitOption[0])] = trim(splitOption[1])
+#   endfor
+#
+#   " If the options contain a 'main' flag, relay to the given file
+#   if has_key(options, 'main')
+#     for mainFile in split(options.main, '|')
+#       let mainPath = fnamemodify(a:path, ':h') . '/' . mainFile
+#       call LessToCSS(mainPath, readfile(mainPath)[:1][0])
+#     endfor
+#   elseif has_key(options, 'out')
+#     " we will ignore compress...
+#     silent execute
+#         \ '!lessc '
+#         \ . (get(options, 'sourcemap') == 'true' ? '--source-map ' : '')
+#         \ . a:path . ' '
+#         \ . fnamemodify(a:path, ':h') . '/' . options.out
+#   endif
+# endfunction
 
