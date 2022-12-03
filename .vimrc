@@ -184,6 +184,8 @@ nnoremap <leader>t :exe 'tabn ' .. g:lasttab<CR>
 nnoremap <leader>T :tabfirst<CR>
 
 # Terminal
+autocmd User StartifyBufferOpened call RemoveDeadTerminalBuffers()
+
 if has('nvim')
   # I can't bother with nvim right now
   if has('win32')
@@ -198,8 +200,21 @@ endif
 tnoremap <ESC> <C-\><C-n>
 
 
+var termType = has('win32') ? 'pwsh' : &l:shell
+
+def RemoveDeadTerminalBuffers()
+  # The dead buffers are always UNLOADED but LISTED
+  # But I haven't found a way to get all UNLOADED buffers (it simply ignores bufloaded: 0)
+  var bufList = getbufinfo({ 'buflisted': 1 })
+  for listedBuffer in bufList
+    if listedBuffer.name =~ termType && !BufNrIsTerminal(listedBuffer.bufnr)
+      execute 'bdelete ' .. listedBuffer.bufnr
+    endif
+  endfor
+enddef    
+
 def SwitchToFirstTerminalAndBackOrOpen()
-  if getbufvar(bufnr(), '&buftype') == 'terminal'
+  if BufNrIsTerminal(bufnr())
     # From https://vi.stackexchange.com/a/18365
     # NOTE: This could have consequences
     #   (not checking for the window, but for the buffer)
@@ -215,13 +230,16 @@ def SwitchToFirstTerminalAndBackOrOpen()
 enddef
 
 def OpenNewTerminal()
-  var termType = has('win32') ? 'pwsh' : &l:shell
   term_start(termType, {
     'curwin': 1,
     'term_kill': 'term'
   })
 enddef
 
+
+def BufNrIsTerminal(bufnr: number): bool
+  return getbufvar(bufnr, '&buftype') == 'terminal'
+enddef
 
 # --- Plug ---
 
