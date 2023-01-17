@@ -156,6 +156,7 @@ nnoremap <C-g> :TagbarToggle<CR>
 # YouCompleteMe
 nnoremap <leader>l :YcmCompleter GoTo<CR>
 nnoremap <leader>L :YcmCompleter GoToReferences<CR>
+nnoremap <leader>r :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>R :YcmCompleter RefactorRename 
 nnoremap <leader>O :YcmCompleter OrganizeImports<CR>
 nnoremap <leader>F :YcmCompleter Format<CR>
