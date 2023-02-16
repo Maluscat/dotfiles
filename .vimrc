@@ -360,19 +360,15 @@ g:UltiSnipsUsePythonVersion = 3
 g:ycm_autoclose_preview_window_after_completion = 1
 g:ycm_autoclose_preview_window_after_insertion = 1
 g:ycm_seed_identifiers_with_syntax = 1
-# g:ycm_language_server = [
-#   {
-#     'name': 'deno',
-#     'cmdline': [ 'deno', 'lsp' ],
-#     'filetypes': [ 'typescript' ],
-#     'project_root_files': [ 'main.ts' ],
-#     'capabilities': {
-#       'enable': true,
-#       'lint': true,
-#       'unstable': false
-#     }
-#   }
-# ]
+g:ycm_global_ycm_extra_conf = '~/.vim/ycm_extra_conf.py'
+g:ycm_language_server = [
+  {
+    'name': 'deno',
+    'cmdline': [ 'deno', 'lsp' ],
+    'filetypes': [ 'javascript', 'typescript' ],
+    'project_root_files': [ 'deno.json' ]
+  }
+]
 
 # NERDTree
 g:NERDTreeHijackNetrw = 1
