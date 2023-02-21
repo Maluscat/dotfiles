@@ -341,6 +341,7 @@ g:lightline = {
 }
 
 # Grepper
+# NOTE: Needs to be initialized this way, see `:h grepper-options`
 g:grepper = {
   tools: [ 'rg', 'git' ]
 }
