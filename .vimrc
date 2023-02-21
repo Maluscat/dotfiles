@@ -232,8 +232,8 @@ enddef
 
 def OpenNewTerminal()
   term_start(termType, {
-    'curwin': 1,
-    'term_kill': 'term'
+    curwin: 1,
+    term_kill: 'term'
   })
 enddef
 
@@ -312,11 +312,10 @@ g:tagbar_sort = 0
 
 # Startify
 g:startify_bookmarks = [
-  {'c': '~/.vimrc'},
-  {'g': '~/.gvimrc'},
-  {'n': '~/nvim-init.vim'},
-  {'i': '~/nvim-ginit.vim'},
-  {'r': '/dev/node/RobBot_yarn/main.js'}
+  {c: '~/.vimrc'},
+  {g: '~/.gvimrc'},
+  {n: '~/nvim-init.vim'},
+  {i: '~/nvim-ginit.vim'}
 ]
 
 g:startify_session_persistence = 1
@@ -329,21 +328,21 @@ set updatetime=100
 # Lightline
 set noshowmode
 g:lightline = {
-  'colorscheme': 'moonfly',
-  'active': {
-    'left': [
+  colorscheme: 'moonfly',
+  active: {
+    left: [
       [ 'mode', 'paste' ],
       [ 'readonly', 'filename', 'gitbranch', 'modified' ]
     ]
   },
-  'component_function': {
-    'gitbranch': 'FugitiveHead'
+  component_function: {
+    gitbranch: 'FugitiveHead'
   }
 }
 
 # Grepper
 g:grepper = {
-  'tools': [ 'rg', 'git' ]
+  tools: [ 'rg', 'git' ]
 }
 
 # Ultisnipts
@@ -363,10 +362,10 @@ g:ycm_seed_identifiers_with_syntax = 1
 g:ycm_global_ycm_extra_conf = '~/.vim/ycm_extra_conf.py'
 g:ycm_language_server = [
   {
-    'name': 'deno',
-    'cmdline': [ 'deno', 'lsp' ],
-    'filetypes': [ 'javascript', 'typescript' ],
-    'project_root_files': [ 'deno.json' ]
+    name: 'deno',
+    cmdline: [ 'deno', 'lsp' ],
+    filetypes: [ 'javascript', 'typescript' ],
+    project_root_files: [ 'deno.json' ]
   }
 ]
 
