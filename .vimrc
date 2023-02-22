@@ -53,10 +53,13 @@ endif
 
 set encoding=UTF-8
 
+set updatetime=100
+
 set splitright
 set splitbelow
 
-set hidden # Background buffers
+# Background buffers
+set hidden
 
 set noswapfile
 set undofile
@@ -242,6 +245,7 @@ def BufNrIsTerminal(bufnr: number): bool
   return getbufvar(bufnr, '&buftype') == 'terminal'
 enddef
 
+
 # --- Plug ---
 
 call plug#begin('~/.vim/plugged')
@@ -312,18 +316,15 @@ g:tagbar_sort = 0
 
 # Startify
 g:startify_bookmarks = [
-  {c: '~/.vimrc'},
-  {g: '~/.gvimrc'},
-  {n: '~/nvim-init.vim'},
-  {i: '~/nvim-ginit.vim'}
+  { c: '~/.vimrc' },
+  { g: '~/.gvimrc' },
+  { n: '~/nvim-init.vim' },
+  { i: '~/nvim-ginit.vim' }
 ]
 
 g:startify_session_persistence = 1
 g:startify_session_sort = 1
 g:startify_session_dir = '~/.vim/session'
-
-# Signify
-set updatetime=100
 
 # Lightline
 set noshowmode
@@ -375,8 +376,6 @@ g:NERDTreeHijackNetrw = 1
 g:NERDTreeShowHidden = 1
 
 g:AutoPairsMultilineClose = 0
-
-# let g:coc_config_home = '~/.vim'
 
 colorscheme moonfly
 
