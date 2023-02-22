@@ -282,7 +282,8 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
 # autocomplete
-Plug 'ycm-core/YouCompleteMe'
+# Plug 'ycm-core/YouCompleteMe'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 # Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
@@ -294,6 +295,21 @@ call plug#end()
 
 
 # --- Plugins Configuration ---
+
+# CoC
+g:coc_config_home = '~/.vim'
+
+autocmd CursorHold * silent call CocHoverActions()
+
+autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
+
+def CocHoverActions()
+  if g:coc_service_initialized
+      && g:CocAction('hasProvider', 'hover')
+    call g:CocActionAsync('doHover')
+  endif
+enddef
+
 
 # FastFold
 ## This activates FastFold regardles of the number of lines
@@ -333,10 +349,16 @@ g:lightline = {
     left: [
       [ 'mode', 'paste' ],
       [ 'readonly', 'filename', 'gitbranch', 'modified' ]
+    ],
+    right: [
+      [ 'lineinfo' ],
+      [ 'percent' ],
+      [ 'cocstatus', 'fileformat', 'fileencoding', 'filetype' ]
     ]
   },
   component_function: {
-    gitbranch: 'FugitiveHead'
+    gitbranch: 'FugitiveHead',
+    cocstatus: 'coc#status'
   }
 }
 
@@ -356,27 +378,11 @@ g:UltiSnipsListSnippets = "<C-l>"
 
 g:UltiSnipsUsePythonVersion = 3
 
-# YouCompleteMe
-g:ycm_autoclose_preview_window_after_completion = 1
-g:ycm_autoclose_preview_window_after_insertion = 1
-g:ycm_seed_identifiers_with_syntax = 1
-g:ycm_global_ycm_extra_conf = '~/.vim/ycm_extra_conf.py'
-g:ycm_language_server = [
-  {
-    name: 'deno',
-    cmdline: [ 'deno', 'lsp' ],
-    filetypes: [ 'javascript', 'typescript' ],
-    project_root_files: [ 'deno.json' ]
-  }
-]
-
 # NERDTree
 g:NERDTreeHijackNetrw = 1
 g:NERDTreeShowHidden = 1
 
 g:AutoPairsMultilineClose = 0
-
-# let g:coc_config_home = '~/.vim'
 
 colorscheme moonfly
 
