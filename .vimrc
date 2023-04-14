@@ -79,10 +79,6 @@ set sessionoptions-=options
 autocmd FileType * setlocal formatoptions-=c formatoptions-=o
 autocmd FileType *.vim setlocal formatoptions+=c
 
-if !has('win32')
-  autocmd GUIEnter * silent call system('wmctrl -ir ' .. v:windowid .. ' -b add,fullscreen')
-endif
-
 # From https://stackoverflow.com/a/5357194
 # Create a new motion `cp` for replacing a word with the paste buffer
 nmap <silent> cp :set opfunc=ChangePaste<CR>g@
@@ -183,6 +179,21 @@ autocmd TabLeave * g:lasttab = tabpagenr()
 nnoremap <leader>t :exe 'tabn ' .. g:lasttab<CR>
 
 nnoremap <leader>T :tabfirst<CR>
+
+# Linux: Make window fullscreen or maximized. Maximized is default on GUIEnter
+if !has('win32')
+  autocmd GUIEnter * call g:MaximizeWindow()
+endif
+
+def g:MaximizeWindow()
+  silent call system('wmctrl -ir ' .. v:windowid .. ' -b remove,fullscreen')
+  silent call system('wmctrl -ir ' .. v:windowid .. ' -b add,maximized_vert,maximized_horz')
+enddef
+
+def g:FullscreenWindow()
+  silent call system('wmctrl -ir ' .. v:windowid .. ' -b add,fullscreen')
+enddef
+
 
 # Terminal
 autocmd User StartifyBufferOpened call RemoveDeadTerminalBuffers()
