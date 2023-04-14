@@ -110,8 +110,9 @@ augroup END
 
 # --- Remaps & Shortcuts ---
 
-# Go down one full screen, originally <C-f>
-nnoremap <C-ö> <C-f>
+# Go up/down one full screen, swapped to match existing <C-u> und <C-d> maps
+nnoremap <C-b> <C-f>
+nnoremap <C-ö> <C-b>
 
 nnoremap <C-w>Q :bd<CR>
 nnoremap Y y$
