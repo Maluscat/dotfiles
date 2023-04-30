@@ -1,4 +1,4 @@
-vim9script noclear
+vim9script
 
 UltiSnipsAddFiletypes css.less
 
@@ -37,7 +37,7 @@ def less_to_CSS(path):
             ('--source-map' if sourcemap == 'true' else ''),
             str(path),
             str(path.parent / options['out'])
-        ], shell=True, stderr=subprocess.PIPE).stderr
+        ], stderr=subprocess.PIPE).stderr
 
 
 def read_first_line(file_name):
