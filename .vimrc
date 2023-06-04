@@ -159,7 +159,7 @@ nnoremap <leader>R :YcmCompleter RefactorRename
 nnoremap <leader>O :YcmCompleter OrganizeImports<CR>
 nnoremap <leader>F :YcmCompleter Format<CR>
 nnoremap <leader>f :YcmCompleter FixIt<CR>
-nnoremap <leader>D :YcmCompleter GetDoc<CR>
+nnoremap <leader>D :YcmDiags<CR>
 # <Plug> Keymaps have to me 'map's (non-recursive)
 nmap <leader>i <Plug>(YCMFindSymbolInWorkspace)
 
