@@ -41,6 +41,9 @@ g:markdown_folding = 1
 g:sh_fold_enabled = 1
 g:rust_fold = 1
 
+set re=0
+set lazyredraw
+
 set termguicolors
 
 set wrap linebreak
