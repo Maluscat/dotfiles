@@ -87,12 +87,25 @@ def g:ChangePaste(type: string)
   silent exe "normal! p"
 enddef
 
+# --- Syntax ---
+
 # Matching parens/braces style
 highlight MatchParen gui=bold cterm=bold ctermbg=none ctermfg=magenta
 
 # This makes the "sign column" (e.g. for the git gutter) the normal background
 # color
 highlight clear SignColumn
+
+augroup extraTodoHighlight
+  autocmd!
+  autocmd Syntax * call SetExtraTodos()
+augroup END
+
+def SetExtraTodos()
+  # NOTE: I have no idea what this does
+  syn match myTodo /NOTE/ containedin=ALL
+  hi link myTodo Todo
+enddef
 
 
 # --- line numbers ---
