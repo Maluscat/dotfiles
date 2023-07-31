@@ -147,6 +147,7 @@ nnoremap <leader>h :echo expand('%:p')<CR>
 nnoremap <leader>g :Grepper<CR>
 nnoremap <leader>G :Git<CR>
 nnoremap <leader>b :Buffers<CR>
+nnoremap <leader>r :Rg<CR>
 nnoremap <leader>c :e ~/.vimrc<CR>
 nnoremap <leader>C :SC<CR>
 nnoremap <leader>S :Startify<CR>
@@ -167,7 +168,6 @@ nnoremap <C-g> :TagbarToggle<CR>
 # YouCompleteMe
 nnoremap <leader>l :YcmCompleter GoTo<CR>
 nnoremap <leader>L :YcmCompleter GoToReferences<CR>
-nnoremap <leader>r :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>R :YcmCompleter RefactorRename 
 nnoremap <leader>O :YcmCompleter OrganizeImports<CR>
 nnoremap <leader>F :YcmCompleter Format<CR>
