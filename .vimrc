@@ -386,6 +386,7 @@ g:UltiSnipsUsePythonVersion = 3
 g:ycm_autoclose_preview_window_after_completion = 1
 g:ycm_autoclose_preview_window_after_insertion = 1
 g:ycm_seed_identifiers_with_syntax = 1
+g:ycm_tsserver_binary_path = 'tsserver'
 g:ycm_global_ycm_extra_conf = '~/.vim/ycm_extra_conf.py'
 g:ycm_language_server = [
   {
