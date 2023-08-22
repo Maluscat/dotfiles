@@ -7,6 +7,6 @@
 /.vim/*
 !/.vim/ft*/
 !/.vim/after/
-!/.vim/ultisnips/
+!/.vim/UltiSnips/
 
 !/.vim/ycm_extra_conf.py

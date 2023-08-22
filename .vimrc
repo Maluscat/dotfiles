@@ -85,10 +85,6 @@ set sessionoptions-=options
 autocmd FileType * setlocal formatoptions-=c formatoptions-=o
 autocmd FileType *.vim setlocal formatoptions+=c
 
-if !has('win32')
-  autocmd GUIEnter * silent call system('wmctrl -ir ' .. v:windowid .. ' -b add,fullscreen')
-endif
-
 # From https://stackoverflow.com/a/5357194
 # Create a new motion `cp` for replacing a word with the paste buffer
 nmap <silent> cp :set opfunc=ChangePaste<CR>g@
@@ -97,12 +93,25 @@ def g:ChangePaste(type: string)
   silent exe "normal! p"
 enddef
 
+# --- Syntax ---
+
 # Matching parens/braces style
 highlight MatchParen gui=bold cterm=bold ctermbg=none ctermfg=magenta
 
 # This makes the "sign column" (e.g. for the git gutter) the normal background
 # color
 highlight clear SignColumn
+
+augroup extraTodoHighlight
+  autocmd!
+  autocmd Syntax * call SetExtraTodos()
+augroup END
+
+def SetExtraTodos()
+  # NOTE: I have no idea what this does
+  syn match myTodo /NOTE/ containedin=ALL
+  hi link myTodo Todo
+enddef
 
 
 # --- line numbers ---
@@ -120,8 +129,9 @@ augroup END
 
 # --- Remaps & Shortcuts ---
 
-# Go down one full screen, originally <C-f>
-nnoremap <C-ö> <C-f>
+# Go up/down one full screen, swapped to match existing <C-u> und <C-d> maps
+nnoremap <C-b> <C-f>
+nnoremap <C-ö> <C-b>
 
 nnoremap <C-w>Q :bd<CR>
 nnoremap Y y$
@@ -143,6 +153,7 @@ nnoremap <leader>h :echo expand('%:p')<CR>
 nnoremap <leader>g :Grepper<CR>
 nnoremap <leader>G :Git<CR>
 nnoremap <leader>b :Buffers<CR>
+nnoremap <leader>r :Rg<CR>
 nnoremap <leader>c :e ~/.vimrc<CR>
 nnoremap <leader>C :SC<CR>
 nnoremap <leader>S :Startify<CR>
@@ -154,6 +165,7 @@ nnoremap <leader>n :nohlsearch<CR>
 # NERDTree
 nnoremap <leader>m :NERDTreeMirror<CR>
 nnoremap <leader>M :NERDTreeFind<CR>
+nnoremap <leader>s :NERDTreeFocus<CR>
 nnoremap <C-f> :NERDTreeToggle<CR>
 
 # Tagbar
@@ -162,12 +174,11 @@ nnoremap <C-g> :TagbarToggle<CR>
 # YouCompleteMe
 nnoremap <leader>l :YcmCompleter GoTo<CR>
 nnoremap <leader>L :YcmCompleter GoToReferences<CR>
-nnoremap <leader>r :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>R :YcmCompleter RefactorRename 
 nnoremap <leader>O :YcmCompleter OrganizeImports<CR>
 nnoremap <leader>F :YcmCompleter Format<CR>
 nnoremap <leader>f :YcmCompleter FixIt<CR>
-nnoremap <leader>D :YcmCompleter GetDoc<CR>
+nnoremap <leader>D :YcmDiags<CR>
 # <Plug> Keymaps have to me 'map's (non-recursive)
 nmap <leader>i <Plug>(YCMFindSymbolInWorkspace)
 
@@ -189,6 +200,21 @@ autocmd TabLeave * g:lasttab = tabpagenr()
 nnoremap <leader>t :exe 'tabn ' .. g:lasttab<CR>
 
 nnoremap <leader>T :tabfirst<CR>
+
+# Linux: Make window fullscreen or maximized. Maximized is default on GUIEnter
+if !has('win32')
+  autocmd GUIEnter * call g:MaximizeWindow()
+endif
+
+def g:MaximizeWindow()
+  silent call system('wmctrl -ir ' .. v:windowid .. ' -b remove,fullscreen')
+  silent call system('wmctrl -ir ' .. v:windowid .. ' -b add,maximized_vert,maximized_horz')
+enddef
+
+def g:FullscreenWindow()
+  silent call system('wmctrl -ir ' .. v:windowid .. ' -b add,fullscreen')
+enddef
+
 
 # Terminal
 autocmd User StartifyBufferOpened call RemoveDeadTerminalBuffers()
@@ -364,6 +390,7 @@ g:UltiSnipsUsePythonVersion = 3
 g:ycm_autoclose_preview_window_after_completion = 1
 g:ycm_autoclose_preview_window_after_insertion = 1
 g:ycm_seed_identifiers_with_syntax = 1
+g:ycm_tsserver_binary_path = 'tsserver'
 g:ycm_global_ycm_extra_conf = '~/.vim/ycm_extra_conf.py'
 g:ycm_language_server = [
   {
