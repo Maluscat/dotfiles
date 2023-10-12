@@ -393,12 +393,23 @@ g:ycm_seed_identifiers_with_syntax = 1
 g:ycm_tsserver_binary_path = 'tsserver'
 g:ycm_global_ycm_extra_conf = '~/.vim/ycm_extra_conf.py'
 g:ycm_language_server = [
-  {
-    name: 'deno',
-    cmdline: [ 'deno', 'lsp' ],
-    filetypes: [ 'javascript', 'typescript' ],
-    project_root_files: [ 'deno.json' ]
-  }
+#   {
+#     'name': 'deno',
+#     'cmdline': [ 'deno', 'lsp' ],
+#     'filetypes': [ 'javascript', 'typescript' ],
+#     'project_root_files': [ 'deno.json' ]
+#   },
+    {
+      name: 'json',
+      cmdline: [ 'vscode-json-languageserver', '--stdio' ],
+      filetypes: [ 'json', 'jsonc' ],
+      capabilities: { textDocument: { completion: { completionItem: { snippetSupport: v:true } } } },
+    },
+    {
+      name: 'R',
+      cmdline: [ 'R', '--slave', '-e', 'languageserver::run()' ],
+      filetypes: [ 'r', 'rmd' ]
+    }
 ]
 
 # NERDTree
