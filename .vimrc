@@ -311,6 +311,7 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'sheerun/vim-polyglot'
 Plug 'groenewege/vim-less'
 Plug 'lepture/vim-jinja'
+Plug 'preservim/vim-markdown'
 
 # snippets
 Plug 'SirVer/ultisnips'
@@ -329,6 +330,16 @@ call plug#end()
 
 
 # --- Plugins Configuration ---
+
+# Vim-Markdown
+g:vim_markdown_fenced_languages = [
+  'c++=cpp',
+  'viml=vim',
+  'bash=sh',
+  'ini=dosini',
+  'js=javascript',
+  'ts=typescript'
+]
 
 # FastFold
 ## This activates FastFold regardles of the number of lines
