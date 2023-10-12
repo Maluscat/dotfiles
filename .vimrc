@@ -300,6 +300,8 @@ Plug 'konfekt/FastFold'
 
 Plug 'preservim/tagbar'
 
+Plug 'ap/vim-css-color'
+
 # NERDTree
 Plug 'preservim/nerdtree'
 Plug 'ryanoasis/vim-devicons'
