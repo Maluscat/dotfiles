@@ -102,10 +102,7 @@ highlight MatchParen gui=bold cterm=bold ctermbg=none ctermfg=magenta
 # color
 highlight clear SignColumn
 
-augroup extraTodoHighlight
-  autocmd!
-  autocmd Syntax * call SetExtraTodos()
-augroup END
+autocmd Syntax * call SetExtraTodos()
 
 def SetExtraTodos()
   # NOTE: I have no idea what this does
