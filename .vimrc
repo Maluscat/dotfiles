@@ -419,8 +419,16 @@ g:ycm_language_server = [
       name: 'R',
       cmdline: [ 'R', '--slave', '-e', 'languageserver::run()' ],
       filetypes: [ 'r', 'rmd' ]
+    },
+    {
+      name: 'haskell',
+      cmdline: [ 'haskell-language-server-wrapper', '--lsp' ],
+      filetypes: [ 'haskell', 'lhaskell' ],
+      project_root_files: [ 'stack.yaml', 'cabal.project', 'package.yaml', 'hie.yaml' ],
     }
 ]
+
+autocmd FileType haskell b:ycm_hover = { 'command': 'GetHover', 'syntax': &filetype }
 
 # NERDTree
 g:NERDTreeHijackNetrw = 1
