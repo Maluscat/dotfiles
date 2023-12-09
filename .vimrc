@@ -169,6 +169,8 @@ nnoremap <C-f> :NERDTreeToggle<CR>
 nnoremap <C-g> :TagbarToggle<CR>
 
 # YouCompleteMe
+nnoremap <leader>y :call g:ToggleDenoLSP()<CR>
+
 nnoremap <leader>l :YcmCompleter GoTo<CR>
 nnoremap <leader>L :YcmCompleter GoToReferences<CR>
 nnoremap <leader>R :YcmCompleter RefactorRename 
@@ -403,32 +405,47 @@ g:ycm_seed_identifiers_with_syntax = 1
 g:ycm_tsserver_binary_path = 'tsserver'
 g:ycm_global_ycm_extra_conf = '~/.vim/ycm_extra_conf.py'
 g:ycm_language_server = [
-#   {
-#     'name': 'deno',
-#     'cmdline': [ 'deno', 'lsp' ],
-#     'filetypes': [ 'javascript', 'typescript' ],
-#     'project_root_files': [ 'deno.json' ]
-#   },
-    {
-      name: 'json',
-      cmdline: [ 'vscode-json-languageserver', '--stdio' ],
-      filetypes: [ 'json', 'jsonc' ],
-      capabilities: { textDocument: { completion: { completionItem: { snippetSupport: v:true } } } },
-    },
-    {
-      name: 'R',
-      cmdline: [ 'R', '--slave', '-e', 'languageserver::run()' ],
-      filetypes: [ 'r', 'rmd' ]
-    },
-    {
-      name: 'haskell',
-      cmdline: [ 'haskell-language-server-wrapper', '--lsp' ],
-      filetypes: [ 'haskell', 'lhaskell' ],
-      project_root_files: [ 'stack.yaml', 'cabal.project', 'package.yaml', 'hie.yaml' ],
-    }
+  {
+    name: 'json',
+    cmdline: [ 'vscode-json-languageserver', '--stdio' ],
+    filetypes: [ 'json', 'jsonc' ],
+    capabilities: { textDocument: { completion: { completionItem: { snippetSupport: v:true } } } },
+  },
+  {
+    name: 'R',
+    cmdline: [ 'R', '--slave', '-e', 'languageserver::run()' ],
+    filetypes: [ 'r', 'rmd' ]
+  },
+  {
+    name: 'haskell',
+    cmdline: [ 'haskell-language-server-wrapper', '--lsp' ],
+    filetypes: [ 'haskell', 'lhaskell' ],
+    project_root_files: [ 'stack.yaml', 'cabal.project', 'package.yaml', 'hie.yaml' ],
+  }
 ]
 
 autocmd FileType haskell b:ycm_hover = { 'command': 'GetHover', 'syntax': &filetype }
+
+var denoLSPEntry = {
+  name: 'deno',
+  cmdline: [ 'deno', 'lsp' ],
+  filetypes: [ 'javascript', 'typescript' ],
+  project_root_files: [ 'deno.json' ]
+}
+
+def g:ToggleDenoLSP()
+  var lspIndex = index(g:ycm_language_server, denoLSPEntry)
+  if lspIndex >= 0
+    remove(g:ycm_language_server, lspIndex)
+    exe 'YcmRestartServer'
+    echo 'Now active LSP: TypeScript!'
+  else
+    insert(g:ycm_language_server, denoLSPEntry)
+    exe 'YcmRestartServer'
+    echo 'Now active LSP: Deno'
+  endif
+enddef
+
 
 # NERDTree
 g:NERDTreeHijackNetrw = 1
