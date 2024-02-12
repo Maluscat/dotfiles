@@ -133,7 +133,6 @@ nnoremap <C-ö> <C-b>
 nnoremap <C-w>Q :bd<CR>
 nnoremap Y y$
 
-nnoremap <C-p> <C-f>
 nnoremap '' ``
 nnoremap `` ''
 nnoremap '. `.
@@ -158,6 +157,9 @@ nnoremap <leader>S :Startify<CR>
 # Toggle search highlight and clear highlight
 nnoremap <leader>N :set hlsearch!<CR>
 nnoremap <leader>n :nohlsearch<CR>
+
+# UndoTree
+nnoremap <C-p> :UndotreeToggle<CR>
 
 # NERDTree
 nnoremap <leader>m :NERDTreeMirror<CR>
@@ -300,6 +302,8 @@ Plug 'konfekt/FastFold'
 Plug 'preservim/tagbar'
 
 Plug 'ap/vim-css-color'
+
+Plug 'mbbill/undotree'
 
 # NERDTree
 Plug 'preservim/nerdtree'
