@@ -170,6 +170,9 @@ nnoremap <C-f> :NERDTreeToggle<CR>
 # Tagbar
 nnoremap <C-g> :TagbarToggle<CR>
 
+# markdown-preview
+nmap <leader>v <Plug>MarkdownPreviewToggle
+
 # YouCompleteMe
 nnoremap <leader>y :call g:ToggleDenoLSP()<CR>
 
@@ -315,6 +318,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'groenewege/vim-less'
 Plug 'lepture/vim-jinja'
 Plug 'preservim/vim-markdown'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
 
 # snippets
 Plug 'SirVer/ultisnips'
@@ -391,6 +395,9 @@ g:lightline = {
 g:grepper = {
   tools: [ 'rg', 'git' ]
 }
+
+# markdown-preview
+g:mkdp_refresh_slow = 1
 
 # Ultisnipts
 g:UltiSnipsExpandTrigger = "<C-s>"
