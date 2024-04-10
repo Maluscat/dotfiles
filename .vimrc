@@ -147,7 +147,7 @@ nnoremap <leader>o o<ESC>O
 nnoremap <leader>h :echo expand('%:p')<CR>
 
 nnoremap <leader>g :Grepper<CR>
-nnoremap <leader>G :Git<CR>
+nnoremap <leader>G :vertical Git<CR>
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>r :Rg<CR>
 nnoremap <leader>c :e ~/.vimrc<CR>
