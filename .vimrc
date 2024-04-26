@@ -85,6 +85,11 @@ set sessionoptions-=options
 autocmd FileType * setlocal formatoptions-=c formatoptions-=o
 autocmd FileType *.vim setlocal formatoptions+=c
 
+# Spell-check Markdown files and Git commit messages
+# From https://www.adamalbrecht.com/blog/2019/10/21/spell-check-in-vim-for-markdown-and-git-commit-messages/
+autocmd FileType markdown setlocal spelllang=en_us
+autocmd FileType gitcommit setlocal spelllang=en_us
+
 # From https://stackoverflow.com/a/5357194
 # Create a new motion `cp` for replacing a word with the paste buffer
 nmap <silent> cp :set opfunc=ChangePaste<CR>g@
