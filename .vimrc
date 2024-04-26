@@ -329,7 +329,7 @@ Plug 'honza/vim-snippets'
 # autocomplete
 Plug 'ycm-core/YouCompleteMe'
 
-# Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'puremourning/vimspector'
 
 # Themes
 Plug 'bluz71/vim-nightfly-guicolors'
