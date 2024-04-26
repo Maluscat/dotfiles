@@ -308,6 +308,8 @@ Plug 'ap/vim-css-color'
 
 Plug 'mbbill/undotree'
 
+Plug 'lbrayner/vim-rzip'
+
 # NERDTree
 Plug 'preservim/nerdtree'
 Plug 'ryanoasis/vim-devicons'
