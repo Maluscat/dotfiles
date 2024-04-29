@@ -8,7 +8,7 @@ if !has("nvim")
   if has("win32")
     set guifont=SauceCodePro\ NF:h11
   else
-    set guifont=SauceCodePro\ NF\ 13
+    set guifont=SauceCodePro\ Nerd\ Font\ Mono\ 13
   endif
 endif
 
