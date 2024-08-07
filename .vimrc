@@ -163,6 +163,26 @@ nnoremap <leader>S :Startify<CR>
 nnoremap <leader>N :set hlsearch!<CR>
 nnoremap <leader>n :nohlsearch<CR>
 
+# Vimspector
+#nmap ls <Plug>VimspectorStop
+nmap lc <Plug>VimspectorContinue
+nmap lr :call vimspector#Stop()<CR> :call vimspector#Restart<CR>
+nmap lp <Plug>VimspectorPause
+nmap lb <Plug>VimspectorToggleBreakpoint
+nmap lB <Plug>VimspectorToggleConditionalBreakpoint
+nmap lf <Plug>VimspectorAddFunctionBreakpoint
+nmap lj <Plug>VimspectorJumpToNextBreakpoint
+nmap lJ <Plug>VimspectorJumpToPreviousBreakpoint
+nmap lt <Plug>VimspectorRunToCursor
+nmap ls :call vimspector#Stop()<CR> :call vimspector#Reset()<CR>
+
+nmap li <Plug>VimspectorBalloonEval
+xmap li <Plug>VimspectorBalloonEval
+
+nnoremap <M-g> <Plug>VimspectorStepOver
+nnoremap <M-c> <Plug>VimspectorStepOut
+nnoremap <M-l> <Plug>VimspectorStepInto
+
 # UndoTree
 nnoremap <C-p> :UndotreeToggle<CR>
 
@@ -471,6 +491,21 @@ g:NERDTreeShowHidden = 1
 
 g:AutoPairsMultilineClose = 0
 
+# Vimspector
+g:vimspector_install_gadgets = [ 'delve' ]
+g:vimspector_configurations = {
+  go: {
+    adapter: 'delve',
+    filetypes: [ 'go' ],
+    configuration: {
+      request: 'launch',
+      program: '${fileDirname}',
+      mode: 'debug'
+    }
+  }
+}
+
+# Color scheme
 colorscheme moonfly
 
 
