@@ -347,6 +347,8 @@ Plug 'lepture/vim-jinja'
 Plug 'preservim/vim-markdown'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
 
+Plug 'Maluscat/vim-less-autocompile'
+
 # snippets
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
