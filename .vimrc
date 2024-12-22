@@ -305,6 +305,14 @@ def BufNrIsTerminal(bufnr: number): bool
 enddef
 
 
+# Ultisnips
+autocmd VimEnter * call SetupUltiSnips()
+def SetupUltiSnips()
+  call UltiSnips#AddFiletypes("less.css")
+  call UltiSnips#AddFiletypes("jinja.html")
+enddef
+
+
 # --- Plug ---
 
 call plug#begin('~/.vim/plugged')
