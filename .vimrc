@@ -88,6 +88,7 @@ autocmd FileType *.vim setlocal formatoptions+=c
 # Spell-check Markdown files and Git commit messages
 # From https://www.adamalbrecht.com/blog/2019/10/21/spell-check-in-vim-for-markdown-and-git-commit-messages/
 autocmd FileType markdown setlocal spell
+autocmd FileType markdown setlocal textwidth=80
 autocmd FileType gitcommit setlocal spell
 
 # From https://stackoverflow.com/a/5357194
