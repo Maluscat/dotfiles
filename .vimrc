@@ -184,8 +184,16 @@ nnoremap <M-g> <Plug>VimspectorStepOver
 nnoremap <M-c> <Plug>VimspectorStepOut
 nnoremap <M-l> <Plug>VimspectorStepInto
 
+# vim-processing
+nmap <silent><leader>k <Plug>(processing-run)
+nmap <leader>K <Plug>(processing-keyword)
+
 # UndoTree
 nnoremap <C-p> :UndotreeToggle<CR>
+
+# EasyAlign
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
 
 # NERDTree
 nnoremap <leader>m :NERDTreeMirror<CR>
@@ -344,7 +352,17 @@ Plug 'mbbill/undotree'
 
 Plug 'lbrayner/vim-rzip'
 
-# NERDTree
+Plug 'AndrewRadev/splitjoin.vim'
+
+Plug 'sophacles/vim-processing'
+
+# Objects
+Plug 'junegunn/vim-easy-align'
+Plug 'wellle/targets.vim'
+Plug 'michaeljsmith/vim-indent-object'
+
+# File explorer
+# Plug 'lambdalisue/fern.vim'
 Plug 'preservim/nerdtree'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
@@ -355,6 +373,7 @@ Plug 'groenewege/vim-less'
 Plug 'lepture/vim-jinja'
 Plug 'preservim/vim-markdown'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
+Plug 'rust-lang/rust.vim'
 
 Plug 'Maluscat/vim-less-autocompile'
 
@@ -375,6 +394,9 @@ call plug#end()
 
 
 # --- Plugins Configuration ---
+
+# Vim-processing
+g:processing_no_default_mappings = 1
 
 # Vim-Markdown
 g:vim_markdown_fenced_languages = [
@@ -454,6 +476,12 @@ g:ycm_seed_identifiers_with_syntax = 1
 g:ycm_tsserver_binary_path = 'tsserver'
 g:ycm_global_ycm_extra_conf = '~/.vim/ycm_extra_conf.py'
 g:ycm_language_server = [
+  # {
+  #   name: 'typescript',
+  #   cmdline: [ 'typescript-language-server', '--stdio' ],
+  #   filetypes: [ 'typescript', 'typescriptreact' ],
+  #   project_root_files: [ 'tsconfig.json', 'package.json' ]
+  # },
   {
     name: 'json',
     cmdline: [ 'vscode-json-languageserver', '--stdio' ],
@@ -512,6 +540,14 @@ g:vimspector_configurations = {
       request: 'launch',
       program: '${fileDirname}',
       mode: 'debug'
+    }
+  },
+  cpp: {
+    adapter: 'CodeLLDB',
+    filetypes: [ 'rust', 'c', 'cpp' ],
+    configuration: {
+      request: 'attach',
+      program: '${fileDirname}',
     }
   }
 }
