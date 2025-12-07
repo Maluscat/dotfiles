@@ -588,7 +588,7 @@ def CleanExtraSpaces()
 enddef
 
 if has("autocmd")
-  autocmd BufWritePre *.txt,*.js,*.py,*.wiki,*.sh,*.coffee :call CleanExtraSpaces()
+  autocmd BufWritePre *.txt,*.js,*.ts,*.py,*.wiki,*.sh,*.coffee :call CleanExtraSpaces()
 endif
 
 # --- Compile every `def` function ---
