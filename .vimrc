@@ -21,6 +21,7 @@ filetype plugin indent on
 # cd C:/dev
 
 g:mapleader = " "
+g:maplocalleader = ","
 
 # Screen padding around the cursor
 set scrolloff=3
@@ -356,6 +357,10 @@ Plug 'AndrewRadev/splitjoin.vim'
 
 Plug 'sophacles/vim-processing'
 
+Plug 'matze/vim-move'
+
+Plug 'lervag/vimtex'
+
 # Objects
 Plug 'junegunn/vim-easy-align'
 Plug 'wellle/targets.vim'
@@ -397,6 +402,14 @@ call plug#end()
 
 # Vim-processing
 g:processing_no_default_mappings = 1
+
+# VimTeX
+g:vimtex_format_enabled = 1
+g:vimtex_quickfix_ignore_filters = [
+  'Command \\underbar',
+  'Command \\underline'
+]
+g:vimtex_quickfix_autoclose_after_keystrokes = 1
 
 # Vim-Markdown
 g:vim_markdown_fenced_languages = [
@@ -500,6 +513,11 @@ g:ycm_language_server = [
     project_root_files: [ 'stack.yaml', 'cabal.project', 'package.yaml', 'hie.yaml' ],
   }
 ]
+
+if !exists('g:ycm_semantic_triggers')
+  g:ycm_semantic_triggers = {}
+endif
+au VimEnter * g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
 
 autocmd FileType haskell b:ycm_hover = { 'command': 'GetHover', 'syntax': &filetype }
 
