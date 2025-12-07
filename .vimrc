@@ -185,6 +185,16 @@ nnoremap <M-g> <Plug>VimspectorStepOver
 nnoremap <M-c> <Plug>VimspectorStepOut
 nnoremap <M-l> <Plug>VimspectorStepInto
 
+# vim-move
+vmap <S-Up> <Plug>MoveBlockUp
+vmap <S-Down> <Plug>MoveBlockDown
+vmap <S-Left> <Plug>MoveBlockLeft
+vmap <S-Right> <Plug>MoveBlockRight
+nmap <S-Up> <Plug>MoveLineUp
+nmap <S-Down> <Plug>MoveLineDown
+nmap <S-Left> <Plug>MoveCharLeft
+nmap <S-Right> <Plug>MoveCharRight
+
 # vim-processing
 nmap <silent><leader>k <Plug>(processing-run)
 nmap <leader>K <Plug>(processing-keyword)
@@ -398,6 +408,9 @@ call plug#end()
 
 
 # --- Plugins Configuration ---
+
+# Vim-Move
+g:move_map_keys = false
 
 # Vim-processing
 g:processing_no_default_mappings = 1
