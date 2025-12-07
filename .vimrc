@@ -151,7 +151,7 @@ nnoremap <leader><CR> a<CR><ESC>
 nnoremap <leader><kEnter> a<CR><ESC>
 nnoremap <leader>o o<ESC>O
 
-nnoremap <leader>h :echo expand('%:p')<CR>
+nnoremap <leader>w :echo expand('%:p')<CR>
 
 nnoremap <leader>g :Grepper<CR>
 nnoremap <leader>G :vertical Git<CR>
@@ -220,6 +220,7 @@ nnoremap <leader>f :YcmCompleter FixIt<CR>
 nnoremap <leader>D :YcmDiags<CR>
 # <Plug> Keymaps have to me 'map's (non-recursive)
 nmap <leader>i <Plug>(YCMFindSymbolInWorkspace)
+nmap <leader>h <Plug>(YCMToggleInlayHints)
 
 nnoremap <C-s> :w<CR>
 
@@ -483,6 +484,7 @@ g:UltiSnipsListSnippets = "<C-l>"
 g:UltiSnipsUsePythonVersion = 3
 
 # YouCompleteMe
+g:ycm_enable_inlay_hints = 0
 g:ycm_autoclose_preview_window_after_completion = 1
 g:ycm_autoclose_preview_window_after_insertion = 1
 g:ycm_seed_identifiers_with_syntax = 1
