@@ -415,6 +415,11 @@ call plug#end()
 
 # --- Plugins Configuration ---
 
+# Vim-surround
+# Replace the default TeX behavior with a generic one
+# 92 is the backslash
+autocmd FileType tex b:surround_92 = "\\\1\\\1{\r}"
+
 # Vim-Move
 g:move_map_keys = false
 
