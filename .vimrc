@@ -331,6 +331,7 @@ enddef
 # Ultisnips
 autocmd VimEnter *.less call UltiSnips#AddFiletypes("less.css")
 autocmd VimEnter *.jinja call UltiSnips#AddFiletypes("jinja.html")
+autocmd VimEnter *.liquid call UltiSnips#AddFiletypes("liquid.html")
 
 
 # --- Plug ---
