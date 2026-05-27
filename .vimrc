@@ -394,6 +394,7 @@ Plug 'lepture/vim-jinja'
 Plug 'preservim/vim-markdown'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
 Plug 'rust-lang/rust.vim'
+Plug 'evanleck/vim-svelte'
 
 Plug 'Maluscat/vim-less-autocompile'
 
@@ -433,6 +434,13 @@ g:vimtex_quickfix_ignore_filters = [
   'Command \\underline'
 ]
 g:vimtex_quickfix_autoclose_after_keystrokes = 1
+
+# Use Zathura without xdotool (for Wayland)
+g:vimtex_view_method = 'zathura_simple'
+
+# Vim-Svelte (https://github.com/leafOfTree/vim-svelte-plugin)
+g:vim_svelte_plugin_use_typescript = 1
+g:vim_svelte_plugin_use_less = 1
 
 # Vim-Markdown
 g:vim_markdown_fenced_languages = [
