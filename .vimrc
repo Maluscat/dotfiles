@@ -89,8 +89,10 @@ autocmd FileType *.vim setlocal formatoptions+=c
 # Spell-check Markdown files and Git commit messages
 # From https://www.adamalbrecht.com/blog/2019/10/21/spell-check-in-vim-for-markdown-and-git-commit-messages/
 autocmd FileType markdown setlocal spell
-autocmd FileType markdown setlocal textwidth=80
+autocmd FileType tex setlocal spell
 autocmd FileType gitcommit setlocal spell
+autocmd FileType markdown setlocal textwidth=80
+autocmd FileType tex setlocal textwidth=90
 
 # From https://stackoverflow.com/a/5357194
 # Create a new motion `cp` for replacing a word with the paste buffer
@@ -374,7 +376,7 @@ Plug 'matze/vim-move'
 
 Plug 'lervag/vimtex'
 
-# Objects
+# Objects / Motions
 Plug 'junegunn/vim-easy-align'
 Plug 'wellle/targets.vim'
 Plug 'michaeljsmith/vim-indent-object'
