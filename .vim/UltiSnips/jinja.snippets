@@ -1,0 +1,16 @@
+snippet if "if block"
+{%- if $1 -%}
+	$0
+{%- endif -%}
+endsnippet
+
+snippet elif "{%- elif -%}"
+{%- elif $1 -%}
+ $0
+endsnippet
+
+snippet macro "{%- macro -%}"
+{%- macro $1 -%}
+ $0
+{%- endmacro -%}
+endsnippet
