@@ -145,6 +145,9 @@ nnoremap `` ''
 nnoremap '. `.
 nnoremap `. '.
 
+nnoremap , ;
+nnoremap ; ,
+
 noremap gs :s///g<Left><Left><Left>
 
 nnoremap <leader><CR> a<CR><ESC>
