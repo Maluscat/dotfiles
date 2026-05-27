@@ -1,4 +1,8 @@
 # ---- OVERRIDES ----
+snippet imp "import ... from ..."
+import ${3:{ $2 }} from '$1';$0
+endsnippet
+
 snippet ctor "constructor(...) { ... }"
 constructor($1) {
   $0
@@ -49,32 +53,46 @@ try {
 endsnippet
 
 snippet terr
-	throw new Error('$1');
+throw new Error('$1');
 endsnippet
 
 snippet ret
-	return $1;
+return $1;
 endsnippet
 
 snippet forr "reversed for (...) {...}"
-  for (let ${1:i} = ${2:${3:arr}.length}; $1 >= 0; $1--) {
-    ${4:$3[$1]$0}
-	}
+for (let ${1:i} = ${2:${3:arr}.length}; $1 >= 0; $1--) {
+  ${4:$3[$1]$0}
+}
 endsnippet
 
 snippet wh "(...) { ... }"
-	while ($1) {
-		$0
-	}
+while ($1) {
+  $0
+}
 endsnippet
 
 snippet do "do { ... } while (...)"
-	do {
-		$0
-	} while ($1);
+do {
+  $0
+} while ($1);
+endsnippet
+
+snippet timeout "setTimeout(...)"
+setTimeout(() => {
+  $0
+}, $1);
 endsnippet
 
 # ---- OWN ----
+snippet tpn "const time = performance.now();"
+const time = performance.now();
+endsnippet
+
+snippet pn "performance.now()"
+performance.now()
+endsnippet
+
 snippet for "for (let i ...)"
 for (let ${1:i} = 0; $1 < ${2:${3:arr}.length}; $1++) {
   ${4:$3[$1]$0}
@@ -116,9 +134,9 @@ snippet af "Arrow function"
 endsnippet
 
 snippet iife "Immediately-Invoked Function Expression"
-(function($1) {
+(($1) => {
   $0
-}($1));
+})($1);
 endsnippet
 
 snippet ae "addEventListener"
