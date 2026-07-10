@@ -62,6 +62,11 @@ set updatetime=100
 set splitright
 set splitbelow
 
+# Case-insensitive when searching purely in lowercase, case-sensitive otherwise
+# See https://stackoverflow.com/a/2288438
+set ignorecase
+set smartcase
+
 # Background buffers
 set hidden
 
@@ -150,7 +155,7 @@ nnoremap `. '.
 nnoremap , ;
 nnoremap ; ,
 
-noremap gs :s///g<Left><Left><Left>
+noremap gs :s///gI<Left><Left><Left><Left>
 
 nnoremap <leader><CR> a<CR><ESC>
 nnoremap <leader><kEnter> a<CR><ESC>
@@ -173,7 +178,7 @@ nnoremap <leader>n :nohlsearch<CR>
 # Vimspector
 #nmap ls <Plug>VimspectorStop
 nmap lc <Plug>VimspectorContinue
-nmap lr :call vimspector#Stop()<CR> :call vimspector#Restart<CR>
+nmap lr :call vimspector#Stop()<CR> :call vimspector#Restart()<CR>
 nmap lp <Plug>VimspectorPause
 nmap lb <Plug>VimspectorToggleBreakpoint
 nmap lB <Plug>VimspectorToggleConditionalBreakpoint
@@ -407,6 +412,8 @@ Plug 'ycm-core/YouCompleteMe'
 
 Plug 'puremourning/vimspector'
 
+# Plug 'dense-analysis/ale'
+
 # Themes
 Plug 'bluz71/vim-nightfly-guicolors'
 Plug 'bluz71/vim-moonfly-colors'
@@ -513,6 +520,10 @@ g:UltiSnipsListSnippets = "<C-l>"
 
 g:UltiSnipsUsePythonVersion = 3
 
+# ALE
+g:ale_completion_enabled = false
+g:ale_disable_lsp = true
+
 # YouCompleteMe
 g:ycm_enable_inlay_hints = 0
 g:ycm_autoclose_preview_window_after_completion = 1
@@ -524,6 +535,12 @@ g:ycm_language_server = [
   # {
   #   name: 'typescript',
   #   cmdline: [ 'typescript-language-server', '--stdio' ],
+  #   filetypes: [ 'typescript', 'typescriptreact' ],
+  #   project_root_files: [ 'tsconfig.json', 'package.json' ]
+  # },
+  # {
+  #   name: 'TypeScript',
+  #   cmdline: [ 'tsc', '--lsp', '--stdio' ],
   #   filetypes: [ 'typescript', 'typescriptreact' ],
   #   project_root_files: [ 'tsconfig.json', 'package.json' ]
   # },
@@ -539,6 +556,79 @@ g:ycm_language_server = [
     filetypes: [ 'r', 'rmd' ]
   },
   {
+    name: 'css',
+    cmdline: [ 'vscode-css-language-server', '--stdio' ],
+    filetypes: [ 'css', 'less', 'sass', 'scss' ],
+    project_root_files: [ 'package.json', '.git' ],
+  },
+  {
+    name: 'Svelte',
+    cmdline: [ 'svelteserver', '--stdio' ],
+    filetypes: [ 'svelte' ],
+    project_root_files: [ 'svelte.config.js' ]
+  },
+  # {
+  #   name: 'TailwindCSS',
+  #   cmdline: [ 'tailwindcss-language-server', '--stdio' ],
+  #   filetypes: [
+  #     'aspnetcorerazor',
+  #     'astro',
+  #     'astro-markdown',
+  #     'blade',
+  #     'clojure',
+  #     'django-html',
+  #     'htmldjango',
+  #     'edge',
+  #     'eelixir', # vim ft
+  #     'elixir',
+  #     'ejs',
+  #     'erb',
+  #     'eruby', # vim ft
+  #     'gohtml',
+  #     'gohtmltmpl',
+  #     'haml',
+  #     'handlebars',
+  #     'hbs',
+  #     'html',
+  #     'htmlangular',
+  #     'html-eex',
+  #     'heex',
+  #     'jade',
+  #     'leaf',
+  #     'liquid',
+  #     'markdown',
+  #     'mdx',
+  #     'mustache',
+  #     'njk',
+  #     'nunjucks',
+  #     'php',
+  #     'razor',
+  #     'slim',
+  #     'twig',
+  #     # css
+  #     'css',
+  #     'less',
+  #     'postcss',
+  #     'sass',
+  #     'scss',
+  #     'stylus',
+  #     'sugarss',
+  #     # js
+  #     'javascript',
+  #     'javascriptreact',
+  #     'reason',
+  #     'rescript',
+  #     'typescript',
+  #     'typescriptreact',
+  #     # mixed
+  #     'vue',
+  #     'svelte',
+  #     'templ'
+  #   ],
+  #   project_root_files: [ 'svelte.config.js', 'vite.config.js' ],
+  #   capabilities: { workspace: { didChangeWatchedFiles: { dynamicRegistration: v:true } } }
+  # },
+  {
     name: 'haskell',
     cmdline: [ 'haskell-language-server-wrapper', '--lsp' ],
     filetypes: [ 'haskell', 'lhaskell' ],
@@ -546,12 +636,15 @@ g:ycm_language_server = [
   }
 ]
 
+autocmd FileType rust g:ycm_enable_inlay_hints = 1
+
+autocmd FileType haskell b:ycm_hover = { 'command': 'GetHover', 'syntax': &filetype }
+
 if !exists('g:ycm_semantic_triggers')
   g:ycm_semantic_triggers = {}
 endif
 au VimEnter * g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
 
-autocmd FileType haskell b:ycm_hover = { 'command': 'GetHover', 'syntax': &filetype }
 
 var denoLSPEntry = {
   name: 'deno',
@@ -581,23 +674,39 @@ g:NERDTreeShowHidden = 1
 g:AutoPairsMultilineClose = 0
 
 # Vimspector
+g:vimspector_base_dir = $HOME .. '/.vim/plugged/vimspector'
 g:vimspector_install_gadgets = [ 'delve' ]
+g:vimspector_adapters = {
+  lldb: {
+    extends: 'lldb'
+  }
+}
 g:vimspector_configurations = {
-  go: {
-    adapter: 'delve',
-    filetypes: [ 'go' ],
+  # go: {
+  #   adapter: 'delve',
+  #   filetypes: [ 'go' ],
+  #   configuration: {
+  #     request: 'launch',
+  #     program: '${fileDirname}',
+  #     mode: 'debug'
+  #   }
+  # },
+  launch: {
+    adapter: 'CodeLLDB',
+    filetypes: [ 'rust' ],
     configuration: {
       request: 'launch',
-      program: '${fileDirname}',
-      mode: 'debug'
+      program: '${workspaceRoot}/../target/debug/guessing_game_new',
     }
   },
-  cpp: {
-    adapter: 'CodeLLDB',
-    filetypes: [ 'rust', 'c', 'cpp' ],
+  attach: {
+    adapter: "CodeLLDB",
+    filetypes: [ "rust", "c", "cpp", "jai" ],
     configuration: {
-      request: 'attach',
-      program: '${fileDirname}',
+      request: "attach",
+      program: "${workspaceRoot}/${fileBasenameNoExtension}",
+      PID: "${PID}",
+      sourceLanguages: [ "rust" ]
     }
   }
 }
