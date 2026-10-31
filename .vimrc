@@ -403,6 +403,7 @@ Plug 'preservim/vim-markdown'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
 Plug 'rust-lang/rust.vim'
 Plug 'evanleck/vim-svelte'
+Plug 'lervag/vimtex'
 
 Plug 'Maluscat/vim-less-autocompile'
 
