@@ -530,11 +530,11 @@ g:ale_completion_enabled = false
 g:ale_disable_lsp = true
 
 # YouCompleteMe
-g:ycm_enable_inlay_hints = 0
+g:ycm_enable_inlay_hints = 1
+g:ycm_enable_semantic_highlighting = 1
 g:ycm_autoclose_preview_window_after_completion = 1
 g:ycm_autoclose_preview_window_after_insertion = 1
 g:ycm_seed_identifiers_with_syntax = 1
-g:ycm_tsserver_binary_path = 'tsserver'
 g:ycm_global_ycm_extra_conf = '~/.vim/ycm_extra_conf.py'
 g:ycm_language_server = [
   # {
@@ -641,7 +641,8 @@ g:ycm_language_server = [
   }
 ]
 
-autocmd FileType rust g:ycm_enable_inlay_hints = 1
+autocmd FileType javascript,typescript g:ycm_enable_inlay_hints = 0
+autocmd FileType css,less,sass,scss g:ycm_auto_hover = ''
 
 autocmd FileType haskell b:ycm_hover = { 'command': 'GetHover', 'syntax': &filetype }
 
