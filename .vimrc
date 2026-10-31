@@ -174,6 +174,8 @@ nnoremap <leader>c :e ~/.vimrc<CR>
 nnoremap <leader>C :SC<CR>
 nnoremap <leader>S :Startify<CR>
 
+nnoremap <leader>s :syntax sync fromstart<CR>
+
 # Toggle search highlight and clear highlight
 nnoremap <leader>N :set hlsearch!<CR>
 nnoremap <leader>n :nohlsearch<CR>
@@ -222,7 +224,6 @@ nmap ga <Plug>(EasyAlign)
 # NERDTree
 nnoremap <leader>m :NERDTreeMirror<CR>
 nnoremap <leader>M :NERDTreeFind<CR>
-nnoremap <leader>s :NERDTreeFocus<CR>
 nnoremap <C-f> :NERDTreeToggle<CR>
 
 # Tagbar
