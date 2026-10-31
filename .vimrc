@@ -140,6 +140,9 @@ augroup END
 
 # --- Remaps & Shortcuts ---
 
+nnoremap <C-g> :normal ]c<CR>
+nnoremap <C-,> :normal [c<CR>
+
 # Go up/down one full screen, swapped to match existing <C-u> und <C-d> maps
 nnoremap <C-b> <C-f>
 nnoremap <C-ö> <C-b>
@@ -223,7 +226,7 @@ nnoremap <leader>s :NERDTreeFocus<CR>
 nnoremap <C-f> :NERDTreeToggle<CR>
 
 # Tagbar
-nnoremap <C-g> :TagbarToggle<CR>
+nnoremap <C-t> :TagbarToggle<CR>
 
 # markdown-preview
 nmap <leader>v <Plug>MarkdownPreviewToggle
