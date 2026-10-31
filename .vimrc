@@ -57,7 +57,7 @@ endif
 
 set encoding=UTF-8
 
-set updatetime=100
+set updatetime=175
 
 set splitright
 set splitbelow
